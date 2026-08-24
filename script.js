@@ -345,6 +345,25 @@
     });
   }
 
+  /* ---------------------------------------------------------
+     Back to top smooth scroll
+     --------------------------------------------------------- */
+  function initBackToTop() {
+    var topLinks = document.querySelectorAll('a[href="#top"], .js-back-to-top');
+    topLinks.forEach(function (link) {
+      link.addEventListener('click', function (e) {
+        e.preventDefault();
+        window.scrollTo({
+          top: 0,
+          behavior: reduceMotion ? 'auto' : 'smooth'
+        });
+        if (window.history && window.history.pushState) {
+          window.history.pushState(null, null, '#top');
+        }
+      });
+    });
+  }
+
   /* --------------------------------------------------------- */
   document.querySelectorAll('.js-accordion').forEach(initAccordion);
   document.querySelectorAll('.nav__trigger').forEach(initDropdown);
@@ -353,4 +372,5 @@
   document.querySelectorAll('.js-form').forEach(initForm);
   initReveal();
   initScrollSpy();
+  initBackToTop();
 })();

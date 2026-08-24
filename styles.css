@@ -615,7 +615,7 @@ svg { display: block; }
 }
 
 .site-footer__links { display: flex; gap: 22px; }
-.site-footer__links a { transition: color 0.18s ease; }
+.site-footer__links a { cursor: pointer; transition: color 0.18s ease; }
 .site-footer__links a:hover { color: #dcdcd8; }
 
 /* =========================================================
