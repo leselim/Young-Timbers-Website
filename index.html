@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Kanoa theme — We design brands that matter and build products that last</title>
+<meta name="description" content="A strategic design studio helping ambitious companies transform their vision into memorable digital experiences.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<script>document.documentElement.classList.add("js");</script>
+</head>
+<body>
+
+<a class="skip-link" href="#main">Skip to content</a>
+
+<!-- ===================== HEADER ===================== -->
+<header class="site-header" id="top">
+  <div class="container header__inner">
+    <a class="brand" href="#top">Kanoa theme</a>
+
+    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">
+      <span class="nav-toggle__label">Menu</span>
+    </button>
+
+    <nav class="nav" id="site-nav" aria-label="Primary">
+      <ul class="nav__list">
+        <li><a class="nav__link" href="#services">about theme</a></li>
+
+        <li class="nav__item nav__item--menu">
+          <button class="nav__link nav__trigger" type="button"
+                  aria-expanded="false" aria-haspopup="true" aria-controls="menu-home-pages">
+            home pages<span class="nav__caret" aria-hidden="true"></span>
+          </button>
+          <ul class="dropdown" id="menu-home-pages" hidden>
+            <li><a class="dropdown__link" href="#top">Studio</a></li>
+            <li><a class="dropdown__link" href="#services">Services</a></li>
+            <li><a class="dropdown__link" href="#contact">Contact</a></li>
+          </ul>
+        </li>
+
+        <li><a class="nav__link" href="#services">patterns</a></li>
+        <li><a class="nav__link" href="#services">color styles</a></li>
+        <li><a class="nav__link" href="#contact">blog</a></li>
+      </ul>
+
+      <ul class="social" aria-label="Social">
+        <li><a class="social__link" href="#" aria-label="Instagram">
+          <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+            <rect x="3" y="3" width="18" height="18" rx="5" fill="none" stroke="currentColor" stroke-width="2"/>
+            <circle cx="12" cy="12" r="4.2" fill="none" stroke="currentColor" stroke-width="2"/>
+            <circle cx="17.4" cy="6.6" r="1.3" fill="currentColor"/>
+          </svg>
+        </a></li>
+        <li><a class="social__link social__link--type" href="#" aria-label="Behance"><span aria-hidden="true">Bē</span></a></li>
+        <li><a class="social__link" href="#" aria-label="LinkedIn">
+          <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+            <rect x="3" y="3" width="18" height="18" rx="2" fill="none" stroke="currentColor" stroke-width="2"/>
+            <rect x="6.6" y="10" width="2.4" height="7.6" fill="currentColor"/>
+            <rect x="6.5" y="6.3" width="2.6" height="2.3" fill="currentColor"/>
+            <path d="M11.4 17.6v-7.6h2.3v1a2.9 2.9 0 0 1 2.5-1.2c1.8 0 2.9 1.1 2.9 3.2v4.6h-2.4v-4.1c0-1.1-.5-1.7-1.4-1.7s-1.6.7-1.6 1.8v4z" fill="currentColor"/>
+          </svg>
+        </a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+
+  <!-- ===================== HERO ===================== -->
+  <section class="hero">
+    <div class="container">
+      <h1 class="hero__title">
+        We design brands that<br class="lb">
+        matter and build products<br class="lb">
+        that last
+      </h1>
+
+      <div class="hero__sub">
+        <p class="hero__lede">
+          A strategic design studio helping ambitious
+          companies transform their vision into
+          memorable digital experiences.
+        </p>
+      </div>
+
+      <div class="hero__foot">
+        <ul class="meta">
+          <li>EST. 2019</li>
+          <li class="meta__dash" aria-hidden="true">&mdash;</li>
+          <li>Berlin / Remote</li>
+        </ul>
+        <a class="btn btn--ghost" href="#services">Explore Work</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== TRUSTED BY ===================== -->
+  <section class="trusted" aria-label="Trusted by">
+    <div class="container">
+      <ul class="trusted__list">
+        <li class="trusted__label">Trusted by</li>
+        <li>Spotify</li>
+        <li>Stripe</li>
+        <li>Notion</li>
+        <li>Linear</li>
+        <li>Vercel</li>
+        <li>Figma</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ===================== SERVICES ===================== -->
+  <section class="services" id="services" data-reveal>
+    <div class="container services__grid">
+
+      <div class="services__intro">
+        <p class="eyebrow">What we do</p>
+        <h2 class="services__title">
+          Comprehensive design<br class="lb">
+          services for modern brands
+        </h2>
+        <p class="services__copy">
+          We blend strategy with creativity to deliver
+          solutions that not only look exceptional but drive
+          real business results.
+        </p>
+        <a class="btn btn--solid" href="#contact">Start a Project</a>
+      </div>
+
+      <ul class="service-list js-accordion" data-accordion-exclusive="false">
+
+        <li class="service">
+          <h3 class="service__head">
+            <button class="service__toggle" type="button" aria-expanded="true" aria-controls="service-panel-1">
+              <span class="service__name">Brand Strategy</span>
+              <span class="service__num" aria-hidden="true">01</span>
+            </button>
+          </h3>
+          <div class="service__panel" id="service-panel-1" role="region" aria-label="Brand Strategy">
+            <div class="service__panel-inner">
+              <p>Positioning, messaging, and visual direction that differentiates your brand in crowded markets.</p>
+            </div>
+          </div>
+        </li>
+
+        <li class="service">
+          <h3 class="service__head">
+            <button class="service__toggle" type="button" aria-expanded="true" aria-controls="service-panel-2">
+              <span class="service__name">Visual Identity</span>
+              <span class="service__num" aria-hidden="true">02</span>
+            </button>
+          </h3>
+          <div class="service__panel" id="service-panel-2" role="region" aria-label="Visual Identity">
+            <div class="service__panel-inner">
+              <p>Logo design, typography, color systems, and comprehensive brand guidelines that scale.</p>
+            </div>
+          </div>
+        </li>
+
+        <li class="service">
+          <h3 class="service__head">
+            <button class="service__toggle" type="button" aria-expanded="true" aria-controls="service-panel-3">
+              <span class="service__name">Digital Product</span>
+              <span class="service__num" aria-hidden="true">03</span>
+            </button>
+          </h3>
+          <div class="service__panel" id="service-panel-3" role="region" aria-label="Digital Product">
+            <div class="service__panel-inner">
+              <p>UX/UI design for web and mobile applications that users love and businesses rely on.</p>
+            </div>
+          </div>
+        </li>
+
+        <li class="service">
+          <h3 class="service__head">
+            <button class="service__toggle" type="button" aria-expanded="true" aria-controls="service-panel-4">
+              <span class="service__name">Web Development</span>
+              <span class="service__num" aria-hidden="true">04</span>
+            </button>
+          </h3>
+          <div class="service__panel" id="service-panel-4" role="region" aria-label="Web Development">
+            <div class="service__panel-inner">
+              <p>Custom websites and web applications built with modern technologies and best practices.</p>
+            </div>
+          </div>
+        </li>
+
+      </ul>
+    </div>
+  </section>
+
+  <!-- ===================== CONTACT ===================== -->
+  <section class="contact" id="contact" data-reveal>
+    <div class="container contact__grid">
+
+      <div class="contact__intro">
+        <p class="eyebrow">Get in touch</p>
+        <h2 class="contact__title">
+          Let&rsquo;s build something<br class="lb">
+          that lasts
+        </h2>
+        <p class="contact__copy">
+          Tell us about the work. We read every enquiry and
+          reply within two business days.
+        </p>
+
+        <ul class="detail-list">
+          <li class="detail">
+            <span class="detail__label">Email</span>
+            <span class="detail__value">
+              <a href="mailto:studio@kanoa.design">studio@kanoa.design</a>
+              <button class="copy" type="button" data-copy="studio@kanoa.design">
+                <span class="copy__label">Copy</span>
+              </button>
+            </span>
+          </li>
+          <li class="detail">
+            <span class="detail__label">Phone</span>
+            <span class="detail__value"><a href="tel:+493012345678">+49 30 1234 5678</a></span>
+          </li>
+          <li class="detail">
+            <span class="detail__label">Studio</span>
+            <span class="detail__value">Torstra&szlig;e 128, 10119 Berlin</span>
+          </li>
+        </ul>
+      </div>
+
+      <!-- No `action` set: the form runs in demo mode and never leaves the browser.
+           Add action="https://your-endpoint" to POST it as JSON instead. -->
+      <form class="form js-form" novalidate>
+        <div class="field">
+          <label class="field__label" for="field-name">Name</label>
+          <input class="field__input" id="field-name" name="name" type="text"
+                 autocomplete="name" required minlength="2"
+                 aria-describedby="error-name">
+          <p class="field__error" id="error-name" hidden></p>
+        </div>
+
+        <div class="field">
+          <label class="field__label" for="field-email">Email</label>
+          <input class="field__input" id="field-email" name="email" type="email"
+                 autocomplete="email" required
+                 aria-describedby="error-email">
+          <p class="field__error" id="error-email" hidden></p>
+        </div>
+
+        <div class="field">
+          <label class="field__label" for="field-project">Project type</label>
+          <div class="field__select">
+            <select class="field__input" id="field-project" name="project" required
+                    aria-describedby="error-project">
+              <option value="">Select one</option>
+              <option value="brand-strategy">Brand Strategy</option>
+              <option value="visual-identity">Visual Identity</option>
+              <option value="digital-product">Digital Product</option>
+              <option value="web-development">Web Development</option>
+              <option value="something-else">Something else</option>
+            </select>
+            <span class="field__caret" aria-hidden="true"></span>
+          </div>
+          <p class="field__error" id="error-project" hidden></p>
+        </div>
+
+        <div class="field">
+          <label class="field__label" for="field-message">
+            Message
+            <span class="field__count" data-count-for="field-message" aria-hidden="true">0 / 600</span>
+          </label>
+          <textarea class="field__input field__input--area" id="field-message" name="message"
+                    rows="4" required minlength="10" maxlength="600"
+                    aria-describedby="error-message"></textarea>
+          <p class="field__error" id="error-message" hidden></p>
+        </div>
+
+        <div class="form__foot">
+          <button class="btn btn--solid" type="submit">Send Message</button>
+          <p class="form__status" role="status" aria-live="polite"></p>
+        </div>
+      </form>
+
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="container site-footer__inner">
+    <span class="site-footer__brand">Kanoa theme</span>
+    <ul class="site-footer__links">
+      <li><a href="#services">Services</a></li>
+      <li><a href="#contact">Contact</a></li>
+      <li><a href="#top">Back to top</a></li>
+    </ul>
+    <span>&copy; 2026 &mdash; All rights reserved</span>
+  </div>
+</footer>
+
+<script src="script.js" defer></script>
+</body>
+</html>
