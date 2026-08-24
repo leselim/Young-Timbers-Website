@@ -1,5 +1,5 @@
 /* =========================================================
-   Kanoa theme - interactions
+   Young Timbers - interactions
    Every behaviour is progressive: without JS the page still
    reads correctly (panels open, nav visible, form posts).
    ========================================================= */
@@ -329,7 +329,7 @@
       };
       var fail = function () {
         submit.disabled = false;
-        setStatus('Something went wrong. Please email studio@kanoa.design instead.', 'error');
+        setStatus('Something went wrong. Please email studio@youngtimbers.com instead.', 'error');
       };
 
       if (form.getAttribute('action')) {
