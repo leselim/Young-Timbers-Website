@@ -329,7 +329,7 @@
       };
       var fail = function () {
         submit.disabled = false;
-        setStatus('Something went wrong. Please email studio@youngtimbers.com instead.', 'error');
+        setStatus('Something went wrong. Please email info@youngtimbers.co.za instead.', 'error');
       };
 
       if (form.getAttribute('action')) {
