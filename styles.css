@@ -256,31 +256,17 @@ svg { display: block; }
 .btn--solid:hover { background: #2b2c30; border-color: #2b2c30; }
 
 /* =========================================================
-   Capabilities marquee
+   Trusted by
    ========================================================= */
 .trusted {
   border-bottom: 1px solid var(--border);
-  overflow: hidden;
-  width: 100%;
-}
-
-.trusted__marquee {
-  width: 100%;
-  overflow: hidden;
-}
-
-.trusted__track {
-  display: flex;
-  width: max-content;
-  will-change: transform;
-  animation: marquee 35s linear infinite;
 }
 
 .trusted__list {
   display: flex;
   align-items: center;
-  gap: var(--space-5);
-  padding-right: var(--space-5);
+  justify-content: space-between;
+  gap: var(--space-3);
   min-height: 86px;
   font-size: var(--fs-nano);
   font-weight: 500;
@@ -289,23 +275,11 @@ svg { display: block; }
   color: var(--text-primary);
 }
 
-.trusted__list li {
-  white-space: nowrap;
-  flex-shrink: 0;
-}
+.trusted__list li { white-space: nowrap; }
 
 .trusted__label {
   font-weight: 400;
   color: var(--text-muted);
-}
-
-@keyframes marquee {
-  0% {
-    transform: translateX(0);
-  }
-  100% {
-    transform: translateX(-50%);
-  }
 }
 
 /* =========================================================
@@ -715,9 +689,16 @@ svg { display: block; }
   .hero__foot { margin-top: var(--space-5); }
 
   .trusted__list {
+    justify-content: flex-start;
     gap: var(--space-4);
-    padding-right: var(--space-4);
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    padding-block: 26px;
+    min-height: 0;
+    touch-action: pan-x;
   }
+  .trusted__list::-webkit-scrollbar { display: none; }
 
   .services__grid { grid-template-columns: 1fr; gap: var(--space-5); }
   .services__copy { max-width: 520px; }
