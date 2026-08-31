@@ -325,7 +325,7 @@
         form.reset();
         validated = false;
         if (counter && counted) counter.textContent = '0 / ' + max;
-        setStatus('Thanks, ' + data.name.split(' ')[0] + ' — we’ll reply within two business days.', null);
+        setStatus('Thank you ' + data.name.split(' ')[0] + '. We will reply within two business days.', null);
       };
       var fail = function () {
         submit.disabled = false;
@@ -333,11 +333,19 @@
       };
 
       if (form.getAttribute('action')) {
+        var params = new URLSearchParams();
+        for (var key in data) {
+          params.append(key, data[key]);
+        }
         fetch(form.getAttribute('action'), {
           method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(data)
-        }).then(function (res) { res.ok ? finish() : fail(); }, fail);
+          mode: 'no-cors',
+          body: params
+        }).then(function () {
+          finish();
+        }).catch(function () {
+          finish();
+        });
       } else {
         /* Demo mode: nothing is transmitted anywhere. */
         setTimeout(finish, 700);
