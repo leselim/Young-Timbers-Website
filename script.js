@@ -325,7 +325,7 @@
         form.reset();
         validated = false;
         if (counter && counted) counter.textContent = '0 / ' + max;
-        setStatus('Thank you ' + data.name.split(' ')[0] + '. We will reply within two business days.', null);
+        setStatus('Thank you ' + data.name.split(' ')[0] + '. We will get back to you.', null);
       };
       var fail = function () {
         submit.disabled = false;

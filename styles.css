@@ -524,6 +524,8 @@ svg { display: block; }
    ========================================================= */
 .form { display: grid; gap: 26px; }
 
+.form__intro { margin-bottom: 8px; }
+
 .field { display: grid; }
 
 .field__label {
