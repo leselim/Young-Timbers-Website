@@ -372,6 +372,63 @@
     });
   }
 
+  /* ---------------------------------------------------------
+     Mobile Contact Carousel
+     --------------------------------------------------------- */
+  function initContactCarousel() {
+    var carousel = document.getElementById('contact-carousel');
+    var formSlide = document.getElementById('contact-slide-form');
+    var dots = Array.prototype.slice.call(document.querySelectorAll('.contact__dot'));
+    var slides = Array.prototype.slice.call(document.querySelectorAll('.contact__slide'));
+    if (!carousel || !formSlide) return;
+
+    function setActiveDot(index) {
+      dots.forEach(function (dot, i) {
+        dot.classList.toggle('is-active', i === index);
+      });
+    }
+
+    dots.forEach(function (dot, i) {
+      dot.addEventListener('click', function () {
+        var target = slides[i];
+        if (target) {
+          carousel.scrollTo({
+            left: target.offsetLeft - carousel.offsetLeft,
+            behavior: reduceMotion ? 'auto' : 'smooth'
+          });
+          setActiveDot(i);
+        }
+      });
+    });
+
+    if ('IntersectionObserver' in window) {
+      var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            var index = slides.indexOf(entry.target);
+            if (index > -1) setActiveDot(index);
+          }
+        });
+      }, { root: carousel, threshold: 0.6 });
+
+      slides.forEach(function (slide) { io.observe(slide); });
+    }
+
+    /* Jump to form slide if user clicks any "Start a Project" or "#contact" button on mobile */
+    document.querySelectorAll('a[href="#contact"]').forEach(function (link) {
+      link.addEventListener('click', function () {
+        if (window.innerWidth <= 560) {
+          setTimeout(function () {
+            carousel.scrollTo({
+              left: formSlide.offsetLeft - carousel.offsetLeft,
+              behavior: reduceMotion ? 'auto' : 'smooth'
+            });
+          }, 150);
+        }
+      });
+    });
+  }
+
   /* --------------------------------------------------------- */
   document.querySelectorAll('.js-accordion').forEach(initAccordion);
   document.querySelectorAll('.nav__trigger').forEach(initDropdown);
@@ -381,4 +438,5 @@
   initReveal();
   initScrollSpy();
   initBackToTop();
+  initContactCarousel();
 })();

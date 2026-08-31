@@ -446,6 +446,10 @@ svg { display: block; }
   padding-bottom: var(--space-6);
 }
 
+.contact__dots {
+  display: none !important;
+}
+
 .contact__grid {
   display: grid;
   grid-template-columns: 0.70fr 1fr;
@@ -711,6 +715,51 @@ svg { display: block; }
 
 @media (max-width: 560px) {
   :root { --gutter: 20px; }
+
+  .contact__grid {
+    display: flex;
+    grid-template-columns: none;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    gap: 0;
+  }
+  .contact__grid::-webkit-scrollbar { display: none; }
+
+  .contact__slide {
+    flex: 0 0 100%;
+    min-width: 100%;
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
+    box-sizing: border-box;
+  }
+
+  .contact__dots {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 24px;
+  }
+
+  .contact__dot {
+    width: 6px;
+    height: 6px;
+    padding: 0;
+    border: 0;
+    border-radius: 50%;
+    background: var(--border-strong);
+    cursor: pointer;
+    transition: background-color 0.2s ease, width 0.2s ease, border-radius 0.2s ease;
+  }
+
+  .contact__dot.is-active {
+    background: var(--text-primary);
+    width: 18px;
+    border-radius: 3px;
+  }
 
   .hero { padding-top: var(--space-4); padding-bottom: var(--space-4); }
   .hero__title {
