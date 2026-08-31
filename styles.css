@@ -607,16 +607,12 @@ svg { display: block; }
 .site-footer__inner {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  gap: var(--space-3);
+  justify-content: center;
+  text-align: center;
   min-height: 84px;
-  font-size: var(--fs-micro);
+  font-size: var(--fs-nano);
   letter-spacing: 0.02em;
 }
-
-.site-footer__links { display: flex; gap: 22px; }
-.site-footer__links a { cursor: pointer; transition: color 0.18s ease; }
-.site-footer__links a:hover { color: #dcdcd8; }
 
 /* =========================================================
    Responsive & Device Compatibility
@@ -745,8 +741,7 @@ svg { display: block; }
   .form__foot { flex-direction: column; align-items: stretch; gap: 14px; }
   .form__foot .btn { width: 100%; min-height: 46px; }
 
-  .site-footer__inner { flex-direction: column; align-items: flex-start; gap: 14px; padding-block: 24px; min-height: 0; }
-  .site-footer__links { flex-wrap: wrap; gap: 16px; }
+  .site-footer__inner { padding-block: 24px; min-height: 0; }
 }
 
 @media (max-width: 380px) {
