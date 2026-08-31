@@ -376,51 +376,19 @@
      Mobile Contact Carousel
      --------------------------------------------------------- */
   function initContactCarousel() {
-    var tabs = Array.prototype.slice.call(document.querySelectorAll('.contact__tab'));
     var carousel = document.getElementById('contact-carousel');
-    var slides = Array.prototype.slice.call(document.querySelectorAll('.contact__slide'));
-    if (!tabs.length || !carousel || !slides.length) return;
-
-    function setActiveTab(index) {
-      tabs.forEach(function (tab, i) {
-        var active = i === index;
-        tab.classList.toggle('is-active', active);
-        tab.setAttribute('aria-selected', String(active));
-      });
-    }
-
-    tabs.forEach(function (tab, i) {
-      tab.addEventListener('click', function () {
-        var target = slides[i];
-        if (target) {
-          carousel.scrollTo({
-            left: target.offsetLeft - carousel.offsetLeft,
-            behavior: reduceMotion ? 'auto' : 'smooth'
-          });
-          setActiveTab(i);
-        }
-      });
-    });
-
-    if ('IntersectionObserver' in window) {
-      var io = new IntersectionObserver(function (entries) {
-        entries.forEach(function (entry) {
-          if (entry.isIntersecting) {
-            var index = slides.indexOf(entry.target);
-            if (index > -1) setActiveTab(index);
-          }
-        });
-      }, { root: carousel, threshold: 0.6 });
-
-      slides.forEach(function (slide) { io.observe(slide); });
-    }
+    var formSlide = document.getElementById('contact-slide-form');
+    if (!carousel || !formSlide) return;
 
     /* Jump to form slide if user clicks any "Start a Project" or "#contact" button on mobile */
     document.querySelectorAll('a[href="#contact"]').forEach(function (link) {
       link.addEventListener('click', function () {
-        if (window.innerWidth <= 560 && tabs[1]) {
+        if (window.innerWidth <= 560) {
           setTimeout(function () {
-            tabs[1].click();
+            carousel.scrollTo({
+              left: formSlide.offsetLeft - carousel.offsetLeft,
+              behavior: reduceMotion ? 'auto' : 'smooth'
+            });
           }, 150);
         }
       });

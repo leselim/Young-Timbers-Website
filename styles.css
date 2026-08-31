@@ -446,10 +446,6 @@ svg { display: block; }
   padding-bottom: var(--space-6);
 }
 
-.contact__tabs {
-  display: none;
-}
-
 .contact__grid {
   display: grid;
   grid-template-columns: 0.70fr 1fr;
