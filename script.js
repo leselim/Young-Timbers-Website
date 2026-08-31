@@ -418,7 +418,7 @@
     /* Jump to form slide if user clicks any "Start a Project" or "#contact" button on mobile */
     document.querySelectorAll('a[href="#contact"]').forEach(function (link) {
       link.addEventListener('click', function () {
-        if (window.innerWidth <= 900 && tabs[1]) {
+        if (window.innerWidth <= 560 && tabs[1]) {
           setTimeout(function () {
             tabs[1].click();
           }, 150);
