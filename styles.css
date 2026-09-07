@@ -60,11 +60,28 @@ h1, h2, h3, p, ul, figure { margin: 0; }
 ul { list-style: none; padding: 0; }
 a  { color: inherit; text-decoration: none; }
 button { font: inherit; color: inherit; }
+input, select, textarea { font-family: inherit; }
 svg { display: block; }
+
+/* Long unbroken strings (emails, URLs) never widen the page. */
+h1, h2, h3, p, li, a { overflow-wrap: break-word; }
 
 :focus-visible {
   outline: 1px solid var(--text-primary);
   outline-offset: 3px;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
 }
 
 .skip-link {
@@ -75,7 +92,7 @@ svg { display: block; }
   background: var(--text-primary);
   color: var(--background);
   font-size: var(--fs-micro);
-  z-index: 10;
+  z-index: 100;
 }
 .skip-link:focus { left: 0; }
 
@@ -83,7 +100,9 @@ svg { display: block; }
   width: 100%;
   max-width: var(--container);
   margin-inline: auto;
-  padding-inline: var(--gutter);
+  /* env() keeps content clear of notches / rounded corners in landscape. */
+  padding-left: calc(var(--gutter) + env(safe-area-inset-left, 0px));
+  padding-right: calc(var(--gutter) + env(safe-area-inset-right, 0px));
 }
 
 /* =========================================================
@@ -135,15 +154,7 @@ svg { display: block; }
   transition: color 0.18s ease, opacity 0.18s ease;
 }
 .nav__link:hover { color: var(--text-primary); }
-
-.nav__caret {
-  width: 6px;
-  height: 6px;
-  border-right: 1px solid currentColor;
-  border-bottom: 1px solid currentColor;
-  transform: translateY(-2px) rotate(45deg);
-  opacity: 0.85;
-}
+.nav__link[aria-current="true"] { color: var(--text-primary); }
 
 .social {
   display: flex;
@@ -159,13 +170,6 @@ svg { display: block; }
 }
 .social__link:hover { opacity: 1; }
 .social__link svg { width: 13px; height: 13px; }
-
-.social__link--type {
-  font-size: 12px;
-  font-weight: 600;
-  line-height: 1;
-  letter-spacing: -0.02em;
-}
 
 /* =========================================================
    Hero
@@ -183,6 +187,7 @@ svg { display: block; }
   letter-spacing: -0.022em;
   color: var(--text-primary);
   max-width: 100%;
+  text-wrap: balance;
 }
 
 .hero__sub {
@@ -231,6 +236,7 @@ svg { display: block; }
   font-weight: 400;
   line-height: 1;
   white-space: nowrap;
+  cursor: pointer;
   transition: background-color 0.18s ease, color 0.18s ease, border-color 0.18s ease;
 }
 
@@ -256,7 +262,7 @@ svg { display: block; }
 .btn--solid:hover { background: #2b2c30; border-color: #2b2c30; }
 
 /* =========================================================
-   Trusted by
+   Capabilities
    ========================================================= */
 .trusted {
   border-bottom: 1px solid var(--border);
@@ -266,7 +272,9 @@ svg { display: block; }
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: var(--space-3);
+  flex-wrap: wrap;
+  gap: 14px var(--space-3);
+  padding-block: 20px;
   min-height: 86px;
   font-size: var(--fs-nano);
   font-weight: 500;
@@ -335,7 +343,7 @@ svg { display: block; }
   justify-content: space-between;
   gap: var(--space-3);
   width: 100%;
-  padding: 26px 0 0;
+  padding: 26px 0 4px;
   border: 0;
   background: none;
   text-align: left;
@@ -358,7 +366,9 @@ svg { display: block; }
   letter-spacing: 0.01em;
   color: var(--text-primary);
   font-variant-numeric: tabular-nums;
+  transition: opacity 0.18s ease;
 }
+.service__toggle[aria-expanded="false"] .service__num { opacity: 0.45; }
 
 .service__panel {
   display: grid;
@@ -377,7 +387,7 @@ svg { display: block; }
 }
 
 /* =========================================================
-   Nav toggle (mobile) + dropdown menu
+   Nav toggle (mobile)
    ========================================================= */
 .nav-toggle {
   display: none;
@@ -393,42 +403,9 @@ svg { display: block; }
 .nav-toggle:hover,
 .site-header[data-nav-open] .nav-toggle { color: var(--text-primary); }
 
-.nav__item--menu { position: relative; }
-
-.nav__trigger {
-  padding: 0;
-  border: 0;
-  background: none;
-  cursor: pointer;
-}
-.nav__trigger[aria-expanded="true"] { color: var(--text-primary); }
-.nav__trigger[aria-expanded="true"] .nav__caret { transform: translateY(1px) rotate(-135deg); }
-
-.dropdown {
-  position: absolute;
-  top: calc(100% + 15px);
-  left: -14px;
-  z-index: 30;
-  min-width: 164px;
-  padding: 6px 0;
-  border: 1px solid var(--border);
-  border-radius: 2px;
-  background: var(--background);
-}
-.dropdown[hidden] { display: none; }
-
-.dropdown__link {
-  display: block;
-  padding: 8px 14px;
-  font-size: var(--fs-small);
-  color: var(--text-secondary);
-  transition: color 0.18s ease, background-color 0.18s ease;
-}
-.dropdown__link:hover { color: var(--text-primary); background: rgba(32, 33, 36, 0.04); }
-.dropdown__link[aria-current="true"] { color: var(--text-primary); }
-
 /* =========================================================
-   Scroll reveal - only armed once JS is running
+   Scroll reveal - only armed once JS is running, so the
+   content is never left invisible if script.js fails.
    ========================================================= */
 .js [data-reveal] {
   opacity: 0;
@@ -446,16 +423,16 @@ svg { display: block; }
   padding-bottom: var(--space-6);
 }
 
-.contact__dots {
-  display: none !important;
-}
-
 .contact__grid {
   display: grid;
   grid-template-columns: 0.70fr 1fr;
   gap: 56px;
   align-items: start;
 }
+
+/* Hidden until the track is genuinely a carousel; script.js
+   adds .is-carousel at the breakpoint where that happens. */
+.contact__dots { display: none; }
 
 .contact__title {
   margin-top: var(--space-3);
@@ -501,12 +478,13 @@ svg { display: block; }
   align-items: baseline;
   gap: 12px;
   flex-wrap: wrap;
+  min-width: 0;
 }
 .detail__value a { transition: opacity 0.18s ease; }
 .detail__value a:hover { opacity: 0.6; }
 
 .copy {
-  padding: 0;
+  padding: 4px 0;
   border: 0;
   background: none;
   cursor: pointer;
@@ -528,6 +506,17 @@ svg { display: block; }
 
 .field { display: grid; }
 
+/* Spam trap - removed from the layout and from the tab order. */
+.field--trap {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
 .field__label {
   display: flex;
   align-items: baseline;
@@ -544,6 +533,7 @@ svg { display: block; }
 
 .field__input {
   width: 100%;
+  max-width: 100%;
   margin-top: 10px;
   padding: 8px 0;
   border: 0;
@@ -569,15 +559,17 @@ svg { display: block; }
   padding-right: 24px;
   cursor: pointer;
 }
+/* Centred on the control itself, allowing for the input's top margin,
+   so it stays put when the font size changes on small screens. */
 .field__caret {
   position: absolute;
   right: 3px;
-  bottom: 16px;
+  top: calc(50% + 5px);
   width: 6px;
   height: 6px;
   border-right: 1px solid var(--text-secondary);
   border-bottom: 1px solid var(--text-secondary);
-  transform: rotate(45deg);
+  transform: translateY(-70%) rotate(45deg);
   pointer-events: none;
 }
 
@@ -616,26 +608,35 @@ svg { display: block; }
   justify-content: center;
   text-align: center;
   min-height: 84px;
+  padding-bottom: env(safe-area-inset-bottom, 0px);
   font-size: var(--fs-nano);
   letter-spacing: 0.02em;
 }
 
 /* =========================================================
-   Responsive & Device Compatibility
+   Responsive
    ========================================================= */
 @media (max-width: 1080px) {
   :root { --gutter: 48px; }
   .hero__sub { grid-template-columns: 52% 1fr; }
+  .services__grid, .contact__grid { gap: 44px; }
+}
+
+/* Tablet: two columns get cramped well before the mobile stack. */
+@media (max-width: 980px) {
+  .services__grid,
+  .contact__grid { grid-template-columns: 1fr; gap: var(--space-5); }
+  .services__copy, .contact__copy { max-width: 560px; }
+  .service__panel-inner p { max-width: 620px; }
 }
 
 @media (max-width: 900px) {
-  :root { --gutter: 36px; --header-h: 56px; }
+  :root { --gutter: 36px; }
 
   .header__inner { flex-wrap: wrap; }
   .nav-toggle {
     display: inline-flex;
     min-height: 44px;
-    align-items: center;
   }
 
   .nav {
@@ -648,7 +649,14 @@ svg { display: block; }
     border-top: 1px solid var(--border);
   }
   .site-header[data-nav-open] .header__inner { height: auto; }
-  .site-header[data-nav-open] .nav { display: flex; }
+  .site-header[data-nav-open] .nav {
+    display: flex;
+    /* A short landscape viewport can scroll the panel instead of
+       pushing the links off-screen. */
+    max-height: calc(100vh - var(--header-h) - 20px);
+    overflow-y: auto;
+    overscroll-behavior: contain;
+  }
 
   .nav__list {
     flex-direction: column;
@@ -680,17 +688,16 @@ svg { display: block; }
     height: 16px;
   }
 
-  .contact__grid { grid-template-columns: 1fr; gap: var(--space-5); }
-
   .lb { display: none; }
 
   .hero { padding-block: var(--space-5); }
-  .hero__title { max-width: 100%; word-break: break-word; }
+  .hero__title { max-width: 100%; }
   .hero__sub { grid-template-columns: 1fr; margin-top: var(--space-3); }
   .hero__lede { grid-column: 1; max-width: 540px; }
   .hero__foot { margin-top: var(--space-5); }
 
   .trusted__list {
+    flex-wrap: nowrap;
     justify-content: flex-start;
     gap: var(--space-4);
     overflow-x: auto;
@@ -702,65 +709,80 @@ svg { display: block; }
   }
   .trusted__list::-webkit-scrollbar { display: none; }
 
-  .services__grid { grid-template-columns: 1fr; gap: var(--space-5); }
-  .services__copy { max-width: 520px; }
+  .services { padding-block: var(--space-5); }
+  .contact { padding-block: var(--space-5); }
 }
 
 @media (max-width: 768px) {
-  /* Prevent iOS automatic zoom on focus */
-  .field__input, select, textarea {
-    font-size: 16px !important;
-  }
+  /* 16px is the threshold below which iOS Safari zooms on focus. */
+  .field__input { font-size: 16px; }
 }
 
-@media (max-width: 560px) {
+/* ---------- Contact carousel ---------- */
+@media (max-width: 600px) {
   :root { --gutter: 20px; }
 
-  .contact__grid {
+  .contact__grid.is-carousel {
     display: flex;
     grid-template-columns: none;
+    align-items: flex-start;
+    gap: 0;
     overflow-x: auto;
+    overflow-y: hidden;
     scroll-snap-type: x mandatory;
-    scroll-behavior: smooth;
     -webkit-overflow-scrolling: touch;
     scrollbar-width: none;
-    gap: 0;
+    overscroll-behavior-x: contain;
   }
-  .contact__grid::-webkit-scrollbar { display: none; }
+  .contact__grid.is-carousel::-webkit-scrollbar { display: none; }
 
-  .contact__slide {
+  .contact__grid.is-carousel .contact__slide {
     flex: 0 0 100%;
     min-width: 100%;
+    /* Breathing room so focus outlines are not clipped by the track. */
+    padding: 2px;
     scroll-snap-align: start;
     scroll-snap-stop: always;
-    box-sizing: border-box;
   }
 
-  .contact__dots {
+  .contact__dots.is-carousel {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 8px;
-    margin-top: 24px;
+    gap: 4px;
+    margin-top: 20px;
   }
 
+  /* 6px dot, 44px target: the hit area is padding, not paint. */
   .contact__dot {
-    width: 6px;
-    height: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
     padding: 0;
     border: 0;
+    background: none;
+    cursor: pointer;
+  }
+  .contact__dot::before {
+    content: "";
+    display: block;
+    width: 6px;
+    height: 6px;
     border-radius: 50%;
     background: var(--border-strong);
-    cursor: pointer;
     transition: background-color 0.2s ease, width 0.2s ease, border-radius 0.2s ease;
   }
-
-  .contact__dot.is-active {
+  .contact__dot.is-active::before {
     background: var(--text-primary);
     width: 18px;
     border-radius: 3px;
   }
+  .contact__dot:focus-visible { outline-offset: -6px; }
+}
 
+@media (max-width: 560px) {
   .hero { padding-top: var(--space-4); padding-bottom: var(--space-4); }
   .hero__title {
     font-size: clamp(26px, 7.5vw, 42px);
@@ -788,9 +810,11 @@ svg { display: block; }
 
   .detail { flex-direction: column; gap: 6px; padding: 18px 0; }
   .detail__label { flex: 0 0 auto; }
+  .detail__value { gap: 4px 14px; }
 
   .form__foot { flex-direction: column; align-items: stretch; gap: 14px; }
   .form__foot .btn { width: 100%; min-height: 46px; }
+  .form__status { text-align: center; }
 
   .site-footer__inner { padding-block: 24px; min-height: 0; }
 }
@@ -798,17 +822,18 @@ svg { display: block; }
 @media (max-width: 380px) {
   :root { --gutter: 16px; }
   .hero__title { font-size: 24px; }
-  .btn--ghost, .btn--solid { width: 100%; justify-content: center; }
+  .hero__foot .btn--ghost { width: 100%; }
 }
 
-/* Touch Device Optimizations */
+/* Touch devices: nothing tappable smaller than 44px. */
 @media (pointer: coarse) {
   .btn { min-height: 44px; }
   .nav__link { min-height: 44px; }
   .service__toggle { min-height: 48px; }
+  .copy { padding-block: 10px; }
+  .social__link { min-width: 44px; min-height: 44px; display: flex; align-items: center; justify-content: center; }
 }
 
-/* Ultra-wide Displays */
 @media (min-width: 1400px) {
   :root { --container: 1240px; }
   .hero__title { font-size: 76px; }
@@ -816,5 +841,21 @@ svg { display: block; }
 
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
-  * { transition-duration: 0.01ms !important; animation-duration: 0.01ms !important; }
+  *, *::before, *::after {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* =========================================================
+   Print
+   ========================================================= */
+@media print {
+  .site-header, .nav, .contact__dots, .copy, .btn, .skip-link { display: none !important; }
+  body { background: #fff; color: #000; }
+  .js [data-reveal] { opacity: 1 !important; transform: none !important; }
+  .contact__grid, .services__grid { display: block; }
+  .service__panel { grid-template-rows: 1fr !important; }
+  .site-footer { background: none; color: #000; }
 }

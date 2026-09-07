@@ -2,14 +2,25 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Young Timbers | Digital Product, Branding &amp; Growth Studio</title>
 <meta name="description" content="A strategic design studio helping ambitious companies transform their vision into memorable digital experiences.">
+<meta name="theme-color" content="#f4f4f2">
+<link rel="canonical" href="https://www.youngtimbers.co.za/">
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="Young Timbers | Digital Product, Branding &amp; Growth Studio">
+<meta property="og:description" content="A digital product and venture studio building scalable software, distinct brand identities, and growth marketing for modern businesses.">
+<meta property="og:url" content="https://www.youngtimbers.co.za/">
+<meta property="og:locale" content="en_ZA">
+<meta name="twitter:card" content="summary">
+
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%2316171a'/%3E%3Ctext x='16' y='21' font-family='Helvetica,Arial,sans-serif' font-size='13' font-weight='600' letter-spacing='-0.5' fill='%23f4f4f2' text-anchor='middle'%3EYT%3C/text%3E%3C/svg%3E">
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
-<script>document.documentElement.classList.add("js");</script>
 </head>
 <body>
 
@@ -20,7 +31,7 @@
   <div class="container header__inner">
     <a class="brand" href="#top">Young Timbers</a>
 
-    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">
+    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="Open menu">
       <span class="nav-toggle__label">Menu</span>
     </button>
 
@@ -32,14 +43,14 @@
       </ul>
 
       <ul class="social" aria-label="Social">
-        <li><a class="social__link" href="https://www.instagram.com/youngtimber.s/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+        <li><a class="social__link" href="https://www.instagram.com/youngtimber.s/" target="_blank" rel="noopener noreferrer" aria-label="Young Timbers on Instagram">
           <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
             <rect x="3" y="3" width="18" height="18" rx="5" fill="none" stroke="currentColor" stroke-width="2"/>
             <circle cx="12" cy="12" r="4.2" fill="none" stroke="currentColor" stroke-width="2"/>
             <circle cx="17.4" cy="6.6" r="1.3" fill="currentColor"/>
           </svg>
         </a></li>
-        <li><a class="social__link" href="https://www.linkedin.com/company/youngtimbers/?viewAsMember=true" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+        <li><a class="social__link" href="https://www.linkedin.com/company/youngtimbers/?viewAsMember=true" target="_blank" rel="noopener noreferrer" aria-label="Young Timbers on LinkedIn">
           <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
             <rect x="3" y="3" width="18" height="18" rx="2" fill="none" stroke="currentColor" stroke-width="2"/>
             <rect x="6.6" y="10" width="2.4" height="7.6" fill="currentColor"/>
@@ -107,7 +118,7 @@
         <p class="services__copy">
           We build full-spectrum digital products from zero to one, combining strategic branding with robust engineering and market distribution.
         </p>
-        <a class="btn btn--solid" href="#contact">Start a Project</a>
+        <a class="btn btn--solid" href="#contact" data-contact-target="form">Start a Project</a>
       </div>
 
       <ul class="service-list js-accordion" data-accordion-exclusive="false">
@@ -176,9 +187,12 @@
   <section class="contact" id="contact" data-reveal>
     <div class="container">
 
+      <!-- Two panels. Desktop: side by side. Small screens: a swipeable
+           track driven by the dots below (roles are applied by script.js
+           only while the track is actually a carousel). -->
       <div class="contact__grid" id="contact-carousel">
 
-        <div class="contact__intro contact__slide" id="contact-slide-info" role="tabpanel" aria-labelledby="tab-info">
+        <div class="contact__intro contact__slide" id="contact-slide-info" data-slide-label="Contact details">
           <p class="eyebrow">Direct contact</p>
           <h2 class="contact__title">
             Reach out directly
@@ -192,7 +206,7 @@
               <span class="detail__label">Email</span>
               <span class="detail__value">
                 <a href="mailto:info@youngtimbers.co.za">info@youngtimbers.co.za</a>
-                <button class="copy" type="button" data-copy="info@youngtimbers.co.za">
+                <button class="copy" type="button" data-copy="info@youngtimbers.co.za" aria-label="Copy email address">
                   <span class="copy__label">Copy</span>
                 </button>
               </span>
@@ -208,17 +222,21 @@
           </ul>
         </div>
 
-        <!-- Form posts directly to Google Apps Script Web App to log enquiries into Google Sheets. -->
-        <form class="form js-form contact__slide" id="contact-slide-form" role="tabpanel" aria-labelledby="tab-form" action="https://script.google.com/macros/s/AKfycbxfX0btpSPORdtz0sTLmCk1yLmiDfWrkJvMuXo7p8E8hcLEqUtONB51aSFvnrdePdmWBw/exec" novalidate>
+        <!-- Posts to a Google Apps Script Web App that logs enquiries into Google Sheets. -->
+        <form class="form js-form contact__slide" id="contact-slide-form" data-slide-label="Send a message"
+              method="post"
+              action="https://script.google.com/macros/s/AKfycbxfX0btpSPORdtz0sTLmCk1yLmiDfWrkJvMuXo7p8E8hcLEqUtONB51aSFvnrdePdmWBw/exec"
+              novalidate>
           <div class="form__intro">
             <p class="eyebrow">Send a message</p>
             <h2 class="contact__title">Start a conversation</h2>
             <p class="contact__copy">Fill in your details below and we will get back to you.</p>
           </div>
+
           <div class="field">
             <label class="field__label" for="field-name">Name</label>
             <input class="field__input" id="field-name" name="name" type="text"
-                   autocomplete="name" required minlength="2"
+                   autocomplete="name" autocapitalize="words" required minlength="2"
                    aria-describedby="error-name">
             <p class="field__error" id="error-name" hidden></p>
           </div>
@@ -226,7 +244,8 @@
           <div class="field">
             <label class="field__label" for="field-email">Email</label>
             <input class="field__input" id="field-email" name="email" type="email"
-                   autocomplete="email" required
+                   autocomplete="email" autocapitalize="off" autocorrect="off" spellcheck="false"
+                   inputmode="email" required
                    aria-describedby="error-email">
             <p class="field__error" id="error-email" hidden></p>
           </div>
@@ -259,6 +278,12 @@
             <p class="field__error" id="error-message" hidden></p>
           </div>
 
+          <!-- Spam trap: left empty by people, filled in by bots. -->
+          <div class="field field--trap" aria-hidden="true">
+            <label for="field-company">Company</label>
+            <input id="field-company" name="company" type="text" tabindex="-1" autocomplete="off">
+          </div>
+
           <div class="form__foot">
             <button class="btn btn--solid" type="submit">Send Message</button>
             <p class="form__status" role="status" aria-live="polite"></p>
@@ -267,10 +292,13 @@
 
       </div>
 
-      <!-- Mobile swipe indicator dots (hidden on desktop) -->
-      <div class="contact__dots" aria-hidden="true">
-        <button class="contact__dot is-active" type="button" aria-label="Go to slide 1"></button>
-        <button class="contact__dot" type="button" aria-label="Go to slide 2"></button>
+      <div class="contact__dots">
+        <button class="contact__dot is-active" type="button" data-slide-to="0">
+          <span class="visually-hidden">Show contact details</span>
+        </button>
+        <button class="contact__dot" type="button" data-slide-to="1">
+          <span class="visually-hidden">Show the message form</span>
+        </button>
       </div>
     </div>
   </section>
@@ -279,7 +307,7 @@
 
 <footer class="site-footer">
   <div class="container site-footer__inner">
-    <span>&copy; 2026 Young Timbers</span>
+    <span>&copy; <span data-current-year>2026</span> Young Timbers</span>
   </div>
 </footer>
 

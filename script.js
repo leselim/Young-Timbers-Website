@@ -1,7 +1,11 @@
 /* =========================================================
    Young Timbers - interactions
-   Every behaviour is progressive: without JS the page still
-   reads correctly (panels open, nav visible, form posts).
+
+   Everything here is progressive. The page is fully readable
+   and the form still submits with scripting turned off, so
+   the "js" class is added from here rather than from the
+   document head: if this file fails to load, nothing stays
+   hidden waiting for a reveal that will never run.
    ========================================================= */
 (function () {
   'use strict';
@@ -9,23 +13,33 @@
   var root = document.documentElement;
   root.classList.add('js');
 
-  var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var motionQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
+  function reduceMotion() { return motionQuery.matches; }
+  function scrollMode() { return reduceMotion() ? 'auto' : 'smooth'; }
+
+  function toArray(list) { return Array.prototype.slice.call(list); }
+
+  /* matchMedia listener, with the deprecated fallback for older Safari. */
+  function onMediaChange(mq, handler) {
+    if (mq.addEventListener) mq.addEventListener('change', handler);
+    else if (mq.addListener) mq.addListener(handler);
+  }
 
   /* ---------------------------------------------------------
      Accordion
      Rows start open so the services section reads as a list;
      set data-accordion-exclusive="true" for one-at-a-time.
      --------------------------------------------------------- */
-  function initAccordion(root) {
-    var exclusive = root.dataset.accordionExclusive === 'true';
-    var toggles = Array.prototype.slice.call(root.querySelectorAll('[aria-controls]'));
+  function initAccordion(list) {
+    var exclusive = list.getAttribute('data-accordion-exclusive') === 'true';
+    var toggles = toArray(list.querySelectorAll('[aria-controls]'));
 
     function setOpen(toggle, open) {
       var panel = document.getElementById(toggle.getAttribute('aria-controls'));
       if (!panel) return;
       toggle.setAttribute('aria-expanded', String(open));
-      if (open) { panel.removeAttribute('data-collapsed'); }
-      else { panel.setAttribute('data-collapsed', ''); }
+      if (open) panel.removeAttribute('data-collapsed');
+      else panel.setAttribute('data-collapsed', '');
     }
 
     toggles.forEach(function (toggle, i) {
@@ -54,53 +68,6 @@
   }
 
   /* ---------------------------------------------------------
-     Header dropdown
-     --------------------------------------------------------- */
-  function initDropdown(trigger) {
-    var menu = document.getElementById(trigger.getAttribute('aria-controls'));
-    if (!menu) return;
-    var links = Array.prototype.slice.call(menu.querySelectorAll('a'));
-
-    function open(focusFirst) {
-      trigger.setAttribute('aria-expanded', 'true');
-      menu.hidden = false;
-      if (focusFirst && links[0]) links[0].focus();
-    }
-    function close(refocus) {
-      trigger.setAttribute('aria-expanded', 'false');
-      menu.hidden = true;
-      if (refocus) trigger.focus();
-    }
-    function isOpen() { return trigger.getAttribute('aria-expanded') === 'true'; }
-
-    trigger.addEventListener('click', function (e) {
-      e.stopPropagation();
-      isOpen() ? close(false) : open(false);
-    });
-
-    trigger.addEventListener('keydown', function (e) {
-      if (e.key === 'ArrowDown') { e.preventDefault(); open(true); }
-      else if (e.key === 'Escape' && isOpen()) { e.preventDefault(); close(true); }
-    });
-
-    menu.addEventListener('keydown', function (e) {
-      var i = links.indexOf(document.activeElement);
-      if (e.key === 'Escape') { e.preventDefault(); close(true); }
-      else if (e.key === 'ArrowDown' && i > -1) { e.preventDefault(); links[(i + 1) % links.length].focus(); }
-      else if (e.key === 'ArrowUp' && i > -1) { e.preventDefault(); links[(i - 1 + links.length) % links.length].focus(); }
-      else if (e.key === 'Tab') { close(false); }
-    });
-
-    links.forEach(function (link) {
-      link.addEventListener('click', function () { close(false); });
-    });
-
-    document.addEventListener('click', function (e) {
-      if (isOpen() && !menu.contains(e.target) && e.target !== trigger) close(false);
-    });
-  }
-
-  /* ---------------------------------------------------------
      Mobile nav
      --------------------------------------------------------- */
   function initNavToggle(toggle) {
@@ -111,23 +78,35 @@
 
     function setOpen(open) {
       toggle.setAttribute('aria-expanded', String(open));
+      toggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
       if (open) header.setAttribute('data-nav-open', '');
       else header.removeAttribute('data-nav-open');
       if (label) label.textContent = open ? 'Close' : 'Menu';
     }
 
-    toggle.addEventListener('click', function () {
-      setOpen(toggle.getAttribute('aria-expanded') !== 'true');
+    function isOpen() { return toggle.getAttribute('aria-expanded') === 'true'; }
+
+    toggle.addEventListener('click', function (e) {
+      e.stopPropagation();
+      setOpen(!isOpen());
     });
 
     /* Any in-page jump closes the panel. */
     nav.addEventListener('click', function (e) {
-      var link = e.target.closest('a[href^="#"]');
+      var target = e.target;
+      var link = target && target.closest ? target.closest('a[href^="#"]') : null;
       if (link) setOpen(false);
     });
 
+    /* Tapping the page outside the open panel closes it too. */
+    document.addEventListener('click', function (e) {
+      if (!isOpen()) return;
+      if (nav.contains(e.target) || toggle.contains(e.target)) return;
+      setOpen(false);
+    });
+
     document.addEventListener('keydown', function (e) {
-      if (e.key === 'Escape' && toggle.getAttribute('aria-expanded') === 'true') {
+      if (e.key === 'Escape' && isOpen()) {
         setOpen(false);
         toggle.focus();
       }
@@ -135,19 +114,26 @@
 
     /* Leaving the mobile breakpoint resets the panel. */
     var wide = window.matchMedia('(min-width: 901px)');
-    var onChange = function (e) { if (e.matches) setOpen(false); };
-    wide.addEventListener ? wide.addEventListener('change', onChange) : wide.addListener(onChange);
+    onMediaChange(wide, function (e) { if (e.matches) setOpen(false); });
+    if (wide.matches) setOpen(false);
   }
 
   /* ---------------------------------------------------------
-     Scroll reveal + current-section marking
+     Scroll reveal
      --------------------------------------------------------- */
   function initReveal() {
-    var targets = document.querySelectorAll('[data-reveal]');
-    if (!('IntersectionObserver' in window) || reduceMotion) {
-      Array.prototype.forEach.call(targets, function (el) { el.classList.add('is-revealed'); });
+    var targets = toArray(document.querySelectorAll('[data-reveal]'));
+    if (!targets.length) return;
+
+    function revealAll() {
+      targets.forEach(function (el) { el.classList.add('is-revealed'); });
+    }
+
+    if (!('IntersectionObserver' in window) || reduceMotion()) {
+      revealAll();
       return;
     }
+
     var io = new IntersectionObserver(function (entries) {
       entries.forEach(function (entry) {
         if (!entry.isIntersecting) return;
@@ -156,31 +142,52 @@
       });
     }, { rootMargin: '0px 0px -12% 0px', threshold: 0.05 });
 
-    Array.prototype.forEach.call(targets, function (el) { io.observe(el); });
+    targets.forEach(function (el) { io.observe(el); });
+
+    /* Safety net for anything already on screen that the observer did
+       not report. Sections further down keep their reveal. */
+    window.setTimeout(function () {
+      targets.forEach(function (el) {
+        if (el.classList.contains('is-revealed')) return;
+        var box = el.getBoundingClientRect();
+        if (box.top < window.innerHeight && box.bottom > 0) el.classList.add('is-revealed');
+      });
+    }, 2000);
   }
 
+  /* ---------------------------------------------------------
+     Marks the nav link for the section currently in view.
+     --------------------------------------------------------- */
   function initScrollSpy() {
-    var links = Array.prototype.slice.call(document.querySelectorAll('.dropdown__link[href^="#"]'));
-    var sections = links
-      .map(function (l) { return document.getElementById(l.getAttribute('href').slice(1)); })
-      .filter(Boolean);
-    if (!sections.length || !('IntersectionObserver' in window)) return;
+    var main = document.getElementById('main');
+    if (!main || !('IntersectionObserver' in window)) return;
 
-    var visible = new Set();
+    var pairs = [];
+    toArray(document.querySelectorAll('.nav__link[href^="#"]')).forEach(function (link) {
+      var id = link.getAttribute('href').slice(1);
+      var section = id ? document.getElementById(id) : null;
+      /* Only sections inside <main>: "#top" is the header, not a section. */
+      if (section && main.contains(section)) pairs.push({ link: link, section: section });
+    });
+    if (!pairs.length) return;
+
+    var visible = Object.create(null);
+
     var io = new IntersectionObserver(function (entries) {
       entries.forEach(function (e) {
-        if (e.isIntersecting) visible.add(e.target.id);
-        else visible.delete(e.target.id);
+        visible[e.target.id] = e.isIntersecting;
       });
-      var current = sections.filter(function (s) { return visible.has(s.id); }).pop();
-      links.forEach(function (l) {
-        var match = current && l.getAttribute('href') === '#' + current.id;
-        if (match) l.setAttribute('aria-current', 'true');
-        else l.removeAttribute('aria-current');
+
+      var current = null;
+      pairs.forEach(function (p) { if (visible[p.section.id]) current = p; });
+
+      pairs.forEach(function (p) {
+        if (p === current) p.link.setAttribute('aria-current', 'true');
+        else p.link.removeAttribute('aria-current');
       });
     }, { rootMargin: '-45% 0px -45% 0px' });
 
-    sections.forEach(function (s) { io.observe(s); });
+    pairs.forEach(function (p) { io.observe(p.section); });
   }
 
   /* ---------------------------------------------------------
@@ -196,7 +203,7 @@
       var field = document.createElement('textarea');
       field.value = text;
       field.setAttribute('readonly', '');
-      field.style.cssText = 'position:absolute;left:-9999px';
+      field.style.cssText = 'position:absolute;left:-9999px;top:0';
       document.body.appendChild(field);
       field.select();
       var ok = false;
@@ -206,13 +213,15 @@
     }
 
     button.addEventListener('click', function () {
-      var text = button.dataset.copy || '';
+      var text = button.getAttribute('data-copy') || '';
+      if (!text) return;
+
       var done = function (ok) {
         if (!label) return;
         label.textContent = ok ? 'Copied' : 'Copy failed';
         button.setAttribute('data-copied', '');
-        clearTimeout(timer);
-        timer = setTimeout(function () {
+        window.clearTimeout(timer);
+        timer = window.setTimeout(function () {
           label.textContent = original;
           button.removeAttribute('data-copied');
         }, 2000);
@@ -231,15 +240,17 @@
 
   /* ---------------------------------------------------------
      Contact form
-     Validates on submit, then re-validates a field as it is
-     corrected. Posts to form.action when one is set, and
-     otherwise runs in demo mode without leaving the browser.
+     Validates on submit, then re-validates each field as it is
+     corrected. Posts to form.action when one is set, otherwise
+     runs locally without transmitting anything.
      --------------------------------------------------------- */
   function initForm(form) {
     var status = form.querySelector('.form__status');
     var submit = form.querySelector('[type="submit"]');
-    var fields = Array.prototype.slice.call(form.querySelectorAll('.field__input'));
+    var fields = toArray(form.querySelectorAll('.field__input'));
+    var trap = form.querySelector('.field--trap input');
     var validated = false;
+    var sending = false;
 
     var rules = {
       name: function (v) {
@@ -281,15 +292,17 @@
       var revalidate = function () { if (validated) check(field); };
       field.addEventListener('input', revalidate);
       field.addEventListener('change', revalidate);
-      field.addEventListener('blur', function () { if (validated) check(field); });
+      field.addEventListener('blur', revalidate);
     });
 
     /* Live character count on the message field. */
     var counter = form.querySelector('[data-count-for]');
+    var counted = null;
+    var max = '600';
     if (counter) {
-      var counted = document.getElementById(counter.dataset.countFor);
+      counted = document.getElementById(counter.getAttribute('data-count-for'));
       if (counted) {
-        var max = counted.getAttribute('maxlength') || '600';
+        max = counted.getAttribute('maxlength') || '600';
         var render = function () { counter.textContent = counted.value.length + ' / ' + max; };
         counted.addEventListener('input', render);
         render();
@@ -303,8 +316,13 @@
       else status.removeAttribute('data-state');
     }
 
+    function resetCounter() {
+      if (counter && counted) counter.textContent = '0 / ' + max;
+    }
+
     form.addEventListener('submit', function (e) {
       e.preventDefault();
+      if (sending) return;
       validated = true;
 
       var invalid = fields.filter(function (f) { return !check(f); });
@@ -314,129 +332,303 @@
         return;
       }
 
+      /* A filled spam trap is dropped silently. */
+      if (trap && trap.value) {
+        form.reset();
+        resetCounter();
+        setStatus('Thank you. We will get back to you.', null);
+        return;
+      }
+
       var data = {};
       fields.forEach(function (f) { data[f.name] = f.value.trim(); });
 
-      submit.disabled = true;
+      sending = true;
+      if (submit) submit.disabled = true;
       setStatus('Sending…', null);
 
       var finish = function () {
-        submit.disabled = false;
+        sending = false;
+        if (submit) submit.disabled = false;
         form.reset();
         validated = false;
-        if (counter && counted) counter.textContent = '0 / ' + max;
-        setStatus('Thank you ' + data.name.split(' ')[0] + '. We will get back to you.', null);
-      };
-      var fail = function () {
-        submit.disabled = false;
-        setStatus('Something went wrong. Please email info@youngtimbers.co.za instead.', 'error');
+        fields.forEach(function (f) {
+          f.removeAttribute('aria-invalid');
+          var box = document.getElementById('error-' + f.name);
+          if (box) { box.textContent = ''; box.hidden = true; }
+        });
+        resetCounter();
+        setStatus('Thank you ' + (data.name || '').split(' ')[0] + '. We will get back to you.', null);
       };
 
-      if (form.getAttribute('action')) {
-        var params = new URLSearchParams();
-        for (var key in data) {
-          params.append(key, data[key]);
-        }
-        fetch(form.getAttribute('action'), {
-          method: 'POST',
-          mode: 'no-cors',
-          body: params
-        }).then(function () {
-          finish();
-        }).catch(function () {
-          finish();
-        });
-      } else {
-        /* Demo mode: nothing is transmitted anywhere. */
-        setTimeout(finish, 700);
+      var fail = function () {
+        sending = false;
+        if (submit) submit.disabled = false;
+        setStatus('That did not send. Please email info@youngtimbers.co.za instead.', 'error');
+      };
+
+      var action = form.getAttribute('action');
+      if (!action) {
+        /* No endpoint configured: nothing is transmitted. */
+        window.setTimeout(finish, 700);
+        return;
       }
+
+      var params = new URLSearchParams();
+      Object.keys(data).forEach(function (key) { params.append(key, data[key]); });
+
+      /* The endpoint is opaque under no-cors, so a resolved request is
+         treated as delivered and a rejected one as a genuine failure -
+         previously both paths reported success. */
+      var controller = ('AbortController' in window) ? new AbortController() : null;
+      var timeout = window.setTimeout(function () {
+        if (controller) controller.abort();
+      }, 15000);
+
+      var options = { method: 'POST', mode: 'no-cors', body: params };
+      if (controller) options.signal = controller.signal;
+
+      fetch(action, options).then(function () {
+        window.clearTimeout(timeout);
+        finish();
+      }).catch(function () {
+        window.clearTimeout(timeout);
+        fail();
+      });
     });
   }
 
   /* ---------------------------------------------------------
-     Back to top smooth scroll
+     Back to top
      --------------------------------------------------------- */
   function initBackToTop() {
-    var topLinks = document.querySelectorAll('a[href="#top"], .js-back-to-top');
-    topLinks.forEach(function (link) {
+    toArray(document.querySelectorAll('a[href="#top"], .js-back-to-top')).forEach(function (link) {
       link.addEventListener('click', function (e) {
         e.preventDefault();
-        window.scrollTo({
-          top: 0,
-          behavior: reduceMotion ? 'auto' : 'smooth'
-        });
-        if (window.history && window.history.pushState) {
-          window.history.pushState(null, null, '#top');
-        }
+        window.scrollTo({ top: 0, behavior: scrollMode() });
+        /* Some browsers refuse history writes on file:// URLs. */
+        try {
+          if (window.history && window.history.replaceState) {
+            window.history.replaceState(null, '', window.location.pathname + window.location.search);
+          }
+        } catch (err) { /* the scroll already happened */ }
       });
     });
   }
 
   /* ---------------------------------------------------------
-     Mobile Contact Carousel
+     Contact carousel
+
+     Below the breakpoint the two contact panels become a
+     swipeable track. Above it they are an ordinary two-column
+     grid, so the carousel roles, the dots and the measured
+     height are all attached and detached with the breakpoint
+     rather than left on the markup permanently.
      --------------------------------------------------------- */
   function initContactCarousel() {
-    var carousel = document.getElementById('contact-carousel');
-    var formSlide = document.getElementById('contact-slide-form');
-    var dots = Array.prototype.slice.call(document.querySelectorAll('.contact__dot'));
-    var slides = Array.prototype.slice.call(document.querySelectorAll('.contact__slide'));
-    if (!carousel || !formSlide) return;
+    var track = document.getElementById('contact-carousel');
+    var dotsWrap = document.querySelector('.contact__dots');
+    if (!track || !dotsWrap) return;
 
-    function setActiveDot(index) {
+    var slides = toArray(track.querySelectorAll('.contact__slide'));
+    var dots = toArray(dotsWrap.querySelectorAll('.contact__dot'));
+    if (slides.length < 2 || dots.length !== slides.length) return;
+
+    var mq = window.matchMedia('(max-width: 600px)');
+    var active = 0;
+    var on = false;
+    var heights = [];
+    var frame = null;
+    var syncFrame = null;
+    var lastHeight = -1;
+    var resizeObserver = null;
+
+    function label(i) {
+      return slides[i].getAttribute('data-slide-label') || ('Slide ' + (i + 1));
+    }
+
+    function measure() {
+      heights = slides.map(function (slide) { return slide.offsetHeight; });
+    }
+
+    /* The panels are different heights, so the track height is
+       interpolated across the swipe. Without this the taller panel
+       is clipped mid-gesture. */
+    function applyHeight() {
+      if (!on) return;
+      var width = track.clientWidth;
+      if (!width || !heights.length) return;
+
+      var position = track.scrollLeft / width;
+      var from = Math.max(0, Math.min(slides.length - 1, Math.floor(position)));
+      var to = Math.max(0, Math.min(slides.length - 1, from + 1));
+      var ratio = Math.max(0, Math.min(1, position - from));
+      var height = Math.round(heights[from] + (heights[to] - heights[from]) * ratio);
+
+      /* Only write when the value actually changes, so a resize
+         observer watching the slides cannot feed itself. */
+      if (height > 0 && height !== lastHeight) {
+        lastHeight = height;
+        track.style.height = height + 'px';
+      }
+    }
+
+    function setActive(index) {
+      active = Math.max(0, Math.min(slides.length - 1, index));
       dots.forEach(function (dot, i) {
-        dot.classList.toggle('is-active', i === index);
+        var current = i === active;
+        dot.classList.toggle('is-active', current);
+        if (on) dot.setAttribute('aria-current', current ? 'true' : 'false');
+        else dot.removeAttribute('aria-current');
       });
     }
 
-    dots.forEach(function (dot, i) {
-      dot.addEventListener('click', function () {
-        var target = slides[i];
-        if (target) {
-          carousel.scrollTo({
-            left: target.offsetLeft - carousel.offsetLeft,
-            behavior: reduceMotion ? 'auto' : 'smooth'
-          });
-          setActiveDot(i);
-        }
+    function goTo(index, behavior) {
+      if (!on) return;
+      var target = slides[Math.max(0, Math.min(slides.length - 1, index))];
+      if (!target) return;
+      track.scrollTo({
+        left: target.offsetLeft - slides[0].offsetLeft,
+        behavior: behavior || scrollMode()
       });
+      setActive(index);
+    }
+
+    function onScroll() {
+      if (!on) return;
+      if (frame) window.cancelAnimationFrame(frame);
+      frame = window.requestAnimationFrame(function () {
+        frame = null;
+        applyHeight();
+        var width = track.clientWidth;
+        if (!width) return;
+        setActive(Math.round(track.scrollLeft / width));
+      });
+    }
+
+    /* Left/right arrows step between panels when a dot has focus. */
+    dotsWrap.addEventListener('keydown', function (e) {
+      var index = dots.indexOf(document.activeElement);
+      if (index < 0) return;
+      var next = null;
+      if (e.key === 'ArrowRight') next = (index + 1) % dots.length;
+      else if (e.key === 'ArrowLeft') next = (index - 1 + dots.length) % dots.length;
+      else if (e.key === 'Home') next = 0;
+      else if (e.key === 'End') next = dots.length - 1;
+      if (next === null) return;
+      e.preventDefault();
+      dots[next].focus();
+      goTo(next);
     });
 
-    if ('IntersectionObserver' in window) {
-      var io = new IntersectionObserver(function (entries) {
-        entries.forEach(function (entry) {
-          if (entry.isIntersecting) {
-            var index = slides.indexOf(entry.target);
-            if (index > -1) setActiveDot(index);
-          }
-        });
-      }, { root: carousel, threshold: 0.6 });
+    dots.forEach(function (dot, i) {
+      dot.addEventListener('click', function () { goTo(i); });
+    });
 
-      slides.forEach(function (slide) { io.observe(slide); });
+    track.addEventListener('scroll', onScroll, { passive: true });
+
+    function enable() {
+      on = true;
+      track.classList.add('is-carousel');
+      dotsWrap.classList.add('is-carousel');
+
+      track.setAttribute('role', 'group');
+      track.setAttribute('aria-roledescription', 'carousel');
+      track.setAttribute('aria-label', 'Ways to get in touch');
+      track.setAttribute('tabindex', '0');
+
+      slides.forEach(function (slide, i) {
+        slide.setAttribute('role', 'group');
+        slide.setAttribute('aria-roledescription', 'slide');
+        slide.setAttribute('aria-label', (i + 1) + ' of ' + slides.length + ': ' + label(i));
+      });
+
+      measure();
+      setActive(Math.round(track.scrollLeft / (track.clientWidth || 1)));
+      applyHeight();
+
+      if ('ResizeObserver' in window && !resizeObserver) {
+        resizeObserver = new ResizeObserver(function () {
+          measure();
+          applyHeight();
+        });
+        slides.forEach(function (slide) { resizeObserver.observe(slide); });
+      }
     }
 
-    /* Jump to form slide if user clicks any "Start a Project" or "#contact" button on mobile */
-    document.querySelectorAll('a[href="#contact"]').forEach(function (link) {
-      link.addEventListener('click', function () {
-        if (window.innerWidth <= 560) {
-          setTimeout(function () {
-            carousel.scrollTo({
-              left: formSlide.offsetLeft - carousel.offsetLeft,
-              behavior: reduceMotion ? 'auto' : 'smooth'
-            });
-          }, 150);
-        }
+    function disable() {
+      on = false;
+      track.classList.remove('is-carousel');
+      dotsWrap.classList.remove('is-carousel');
+      track.style.height = '';
+      track.scrollLeft = 0;
+      lastHeight = -1;
+
+      ['role', 'aria-roledescription', 'aria-label', 'tabindex'].forEach(function (attr) {
+        track.removeAttribute(attr);
       });
+      slides.forEach(function (slide) {
+        ['role', 'aria-roledescription', 'aria-label'].forEach(function (attr) {
+          slide.removeAttribute(attr);
+        });
+      });
+      dots.forEach(function (dot) { dot.removeAttribute('aria-current'); });
+
+      if (resizeObserver) {
+        resizeObserver.disconnect();
+        resizeObserver = null;
+      }
+    }
+
+    function sync() {
+      if (mq.matches && !on) enable();
+      else if (!mq.matches && on) disable();
+      else if (on) { measure(); applyHeight(); }
+    }
+
+    /* Resize fires in bursts; one measurement per frame is enough. */
+    function queueSync() {
+      if (syncFrame) return;
+      syncFrame = window.requestAnimationFrame(function () {
+        syncFrame = null;
+        sync();
+      });
+    }
+
+    onMediaChange(mq, queueSync);
+    window.addEventListener('resize', queueSync);
+    window.addEventListener('orientationchange', function () {
+      window.setTimeout(queueSync, 200);
+    });
+    sync();
+
+    /* "Start a Project" opens the message panel rather than the
+       details panel; the plain "Contact" nav link does not. */
+    toArray(document.querySelectorAll('[data-contact-target="form"]')).forEach(function (link) {
+      link.addEventListener('click', function () {
+        if (!on) return;
+        window.setTimeout(function () { goTo(slides.length - 1); }, 250);
+      });
+    });
+  }
+
+  /* ---------------------------------------------------------
+     Footer year
+     --------------------------------------------------------- */
+  function initYear() {
+    toArray(document.querySelectorAll('[data-current-year]')).forEach(function (el) {
+      el.textContent = String(new Date().getFullYear());
     });
   }
 
   /* --------------------------------------------------------- */
-  document.querySelectorAll('.js-accordion').forEach(initAccordion);
-  document.querySelectorAll('.nav__trigger').forEach(initDropdown);
-  document.querySelectorAll('.nav-toggle').forEach(initNavToggle);
-  document.querySelectorAll('.copy').forEach(initCopy);
-  document.querySelectorAll('.js-form').forEach(initForm);
+  toArray(document.querySelectorAll('.js-accordion')).forEach(initAccordion);
+  toArray(document.querySelectorAll('.nav-toggle')).forEach(initNavToggle);
+  toArray(document.querySelectorAll('.copy')).forEach(initCopy);
+  toArray(document.querySelectorAll('.js-form')).forEach(initForm);
   initReveal();
   initScrollSpy();
   initBackToTop();
   initContactCarousel();
+  initYear();
 })();
