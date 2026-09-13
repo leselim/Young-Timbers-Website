@@ -1,0 +1,889 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Young Timbers | Digital Product, Branding &amp; Growth Studio</title>
+<meta name="description" content="A strategic design studio helping ambitious companies transform their vision into memorable digital experiences.">
+<meta name="theme-color" content="#f4f4f2">
+<meta name="robots" content="noindex">
+<link rel="icon" href="__FAVICON__">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+__CSS__
+
+/* ---- preview-only: hero word sequence ---- */
+.hero__word {
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(0.5em);
+  animation: hero-word-in 0.7s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+@keyframes hero-word-in {
+  from { opacity: 0; transform: translateY(0.5em); }
+  to   { opacity: 1; transform: none; }
+}
+.hero__tail {
+  opacity: 0;
+  transform: translateY(10px);
+  animation: hero-word-in 0.6s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+@media (prefers-reduced-motion: reduce) {
+  .hero__word, .hero__tail { animation: none !important; opacity: 1; transform: none; }
+}
+</style>
+</head>
+<body>
+
+<a class="skip-link" href="#main">Skip to content</a>
+
+<!-- ===================== HEADER ===================== -->
+<header class="site-header" id="top">
+  <div class="container header__inner">
+    <a class="brand" href="#top" aria-label="Young Timbers, back to top">
+      <img class="brand__logo" src="__LOGO__" alt="Young Timbers" width="286" height="53">
+    </a>
+
+    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="Open menu">
+      <span class="nav-toggle__label">Menu</span>
+    </button>
+
+    <nav class="nav" id="site-nav" aria-label="Primary">
+      <ul class="nav__list">
+        <li><a class="nav__link" href="#top">About</a></li>
+        <li><a class="nav__link" href="#services">Services</a></li>
+        <li><a class="nav__link" href="#contact">Contact</a></li>
+      </ul>
+
+      <ul class="social" aria-label="Social">
+        <li><a class="social__link" href="https://www.instagram.com/youngtimber.s/" target="_blank" rel="noopener noreferrer" aria-label="Young Timbers on Instagram">
+          <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+            <rect x="3" y="3" width="18" height="18" rx="5" fill="none" stroke="currentColor" stroke-width="2"/>
+            <circle cx="12" cy="12" r="4.2" fill="none" stroke="currentColor" stroke-width="2"/>
+            <circle cx="17.4" cy="6.6" r="1.3" fill="currentColor"/>
+          </svg>
+        </a></li>
+        <li><a class="social__link" href="https://www.linkedin.com/company/youngtimbers/?viewAsMember=true" target="_blank" rel="noopener noreferrer" aria-label="Young Timbers on LinkedIn">
+          <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+            <rect x="3" y="3" width="18" height="18" rx="2" fill="none" stroke="currentColor" stroke-width="2"/>
+            <rect x="6.6" y="10" width="2.4" height="7.6" fill="currentColor"/>
+            <rect x="6.5" y="6.3" width="2.6" height="2.3" fill="currentColor"/>
+            <path d="M11.4 17.6v-7.6h2.3v1a2.9 2.9 0 0 1 2.5-1.2c1.8 0 2.9 1.1 2.9 3.2v4.6h-2.4v-4.1c0-1.1-.5-1.7-1.4-1.7s-1.6.7-1.6 1.8v4z" fill="currentColor"/>
+          </svg>
+        </a></li>
+      </ul>
+    </nav>
+  </div>
+  <div class="scroll-progress" aria-hidden="true" style="transform:scaleX(0)"></div>
+</header>
+
+<main id="main">
+
+  <!-- ===================== HERO ===================== -->
+  <section class="hero">
+    <div class="container">
+      <h1 class="hero__title" data-split>
+        We design brands that<br class="lb">
+        matter and build products<br class="lb">
+        that last
+      </h1>
+
+      <div class="hero__sub">
+        <p class="hero__lede hero__tail" style="animation-delay:.42s">
+          A digital product and venture studio building scalable software, distinct brand identities, and growth marketing for modern businesses.
+        </p>
+      </div>
+
+      <div class="hero__foot hero__tail" style="animation-delay:.52s">
+        <ul class="meta">
+          <li>EST. 2019</li>
+          <li class="meta__dash" aria-hidden="true">/</li>
+          <li>South Africa / Remote</li>
+        </ul>
+        <a class="btn btn--ghost" href="#services"><span>Explore Services</span></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== CAPABILITIES ===================== -->
+  <section class="trusted" aria-label="Capabilities">
+    <div class="container">
+      <div class="ticker">
+        <div class="ticker__track" data-ticker></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== SERVICES ===================== -->
+  <section class="services" id="services" data-reveal>
+    <div class="container services__grid">
+
+      <div class="services__intro">
+        <p class="eyebrow">What we do</p>
+        <h2 class="services__title">
+          End-to-end product design, engineering, and growth for digital-first brands
+        </h2>
+        <p class="services__copy">
+          We build full-spectrum digital products from zero to one, combining strategic branding with robust engineering and market distribution.
+        </p>
+        <a class="btn btn--solid" href="#contact" data-contact-target="form"><span>Start a Project</span></a>
+      </div>
+
+      <ul class="service-list js-accordion" data-accordion-exclusive="false">
+
+        <li class="service">
+          <h3 class="service__head">
+            <button class="service__toggle" type="button" aria-expanded="true" aria-controls="service-panel-1">
+              <span class="service__name">Brand Strategy &amp; Identity</span>
+              <span class="service__num" aria-hidden="true">01</span>
+            </button>
+          </h3>
+          <div class="service__panel" id="service-panel-1" role="region" aria-label="Brand Strategy &amp; Identity">
+            <div class="service__panel-inner">
+              <p>Positioning, messaging frameworks, and visual identities designed to give modern digital ventures a distinct market presence.</p>
+            </div>
+          </div>
+        </li>
+
+        <li class="service">
+          <h3 class="service__head">
+            <button class="service__toggle" type="button" aria-expanded="true" aria-controls="service-panel-2">
+              <span class="service__name">Product Design &amp; Engineering</span>
+              <span class="service__num" aria-hidden="true">02</span>
+            </button>
+          </h3>
+          <div class="service__panel" id="service-panel-2" role="region" aria-label="Product Design &amp; Engineering">
+            <div class="service__panel-inner">
+              <p>End-to-end product design, rapid MVP prototyping, scalable architecture, and custom web development.</p>
+            </div>
+          </div>
+        </li>
+
+        <li class="service">
+          <h3 class="service__head">
+            <button class="service__toggle" type="button" aria-expanded="true" aria-controls="service-panel-3">
+              <span class="service__name">Digital Platforms &amp; UX</span>
+              <span class="service__num" aria-hidden="true">03</span>
+            </button>
+          </h3>
+          <div class="service__panel" id="service-panel-3" role="region" aria-label="Digital Platforms &amp; UX">
+            <div class="service__panel-inner">
+              <p>High-performance web applications, responsive user experiences, and systematic design foundations built to scale.</p>
+            </div>
+          </div>
+        </li>
+
+        <li class="service">
+          <h3 class="service__head">
+            <button class="service__toggle" type="button" aria-expanded="true" aria-controls="service-panel-4">
+              <span class="service__name">Growth &amp; Digital Marketing</span>
+              <span class="service__num" aria-hidden="true">04</span>
+            </button>
+          </h3>
+          <div class="service__panel" id="service-panel-4" role="region" aria-label="Growth &amp; Digital Marketing">
+            <div class="service__panel-inner">
+              <p>Go-to-market execution, performance marketing, content strategy, and conversion optimization to drive user acquisition.</p>
+            </div>
+          </div>
+        </li>
+
+      </ul>
+    </div>
+  </section>
+
+  <!-- ===================== CONTACT ===================== -->
+  <section class="contact" id="contact" data-reveal>
+    <div class="container">
+      <div class="contact__grid" id="contact-carousel">
+
+        <div class="contact__intro contact__slide" id="contact-slide-info" data-slide-label="Contact details">
+          <p class="eyebrow">Direct contact</p>
+          <h2 class="contact__title">Reach out directly</h2>
+          <p class="contact__copy">
+            Give us a call or send an email directly. We review every enquiry and will get back to you.
+          </p>
+
+          <ul class="detail-list">
+            <li class="detail">
+              <span class="detail__label">Email</span>
+              <span class="detail__value">
+                <a href="mailto:info@youngtimbers.co.za">info@youngtimbers.co.za</a>
+                <button class="copy" type="button" data-copy="info@youngtimbers.co.za" aria-label="Copy email address">
+                  <span class="copy__label">Copy</span>
+                </button>
+              </span>
+            </li>
+            <li class="detail">
+              <span class="detail__label">Phone</span>
+              <span class="detail__value"><a href="tel:+27639464108">+27 63 946 4108</a></span>
+            </li>
+            <li class="detail">
+              <span class="detail__label">Studio</span>
+              <span class="detail__value">South Africa</span>
+            </li>
+          </ul>
+        </div>
+
+        <form class="form js-form contact__slide" id="contact-slide-form" data-slide-label="Send a message" method="post" novalidate>
+          <div class="form__intro">
+            <p class="eyebrow">Send a message</p>
+            <h2 class="contact__title">Start a conversation</h2>
+            <p class="contact__copy">Fill in your details below and we will get back to you.</p>
+          </div>
+
+          <div class="form__body">
+            <div class="field">
+              <label class="field__label" for="field-name">Name</label>
+              <input class="field__input" id="field-name" name="name" type="text"
+                     autocomplete="name" autocapitalize="words" aria-describedby="error-name">
+              <p class="field__error" id="error-name" hidden></p>
+            </div>
+
+            <div class="field">
+              <label class="field__label" for="field-email">Email</label>
+              <input class="field__input" id="field-email" name="email" type="email"
+                     autocomplete="email" autocapitalize="off" autocorrect="off" spellcheck="false"
+                     inputmode="email" aria-describedby="error-email">
+              <p class="field__error" id="error-email" hidden></p>
+            </div>
+
+            <div class="field">
+              <label class="field__label" for="field-projectType">Project type</label>
+              <div class="field__select">
+                <select class="field__input" id="field-projectType" name="projectType" aria-describedby="error-projectType">
+                  <option value="">Select one</option>
+                  <option value="brand-strategy-identity">Brand Strategy &amp; Identity</option>
+                  <option value="product-design-mvp">Product Design &amp; MVP Engineering</option>
+                  <option value="web-platforms-uiux">Web Platforms &amp; UI/UX</option>
+                  <option value="digital-marketing-growth">Digital Marketing &amp; Growth Strategy</option>
+                  <option value="full-spectrum-build">Full-Spectrum Build (All Capabilities)</option>
+                </select>
+                <span class="field__caret" aria-hidden="true"></span>
+              </div>
+              <p class="field__error" id="error-projectType" hidden></p>
+            </div>
+
+            <div class="field">
+              <label class="field__label" for="field-message">
+                Message
+                <span class="field__count" data-count-for="field-message" aria-hidden="true">0 / 600</span>
+              </label>
+              <textarea class="field__input field__input--area" id="field-message" name="message"
+                        rows="4" maxlength="600" aria-describedby="error-message"></textarea>
+              <p class="field__error" id="error-message" hidden></p>
+            </div>
+
+            <div class="field field--trap" aria-hidden="true">
+              <label for="field-company">Company</label>
+              <input id="field-company" name="company" type="text" tabindex="-1" autocomplete="off">
+            </div>
+
+            <div class="form__foot">
+              <button class="btn btn--solid" type="submit"><span>Send Message</span></button>
+              <p class="form__status" role="status" aria-live="polite"></p>
+            </div>
+          </div>
+        </form>
+
+      </div>
+
+      <div class="contact__dots">
+        <button class="contact__dot is-active" type="button" data-slide-to="0">
+          <span class="visually-hidden">Show contact details</span>
+        </button>
+        <button class="contact__dot" type="button" data-slide-to="1">
+          <span class="visually-hidden">Show the message form</span>
+        </button>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="container site-footer__inner">
+    <span>&copy; <span data-current-year>2026</span> Young Timbers</span>
+  </div>
+</footer>
+
+<script>
+/* =========================================================
+   Young Timbers - preview build
+
+   This file mirrors the React application one to one: same
+   markup, same stylesheet, same interactions. It exists so
+   the site can be opened, shared or reviewed without a build
+   step. The deployed site is the Vite app in /src.
+   ========================================================= */
+(function () {
+  'use strict';
+
+  var root = document.documentElement;
+  root.classList.add('js');
+
+  var ENDPOINT = '__ENDPOINT__';
+
+  var motionQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
+  function reduceMotion() { return motionQuery.matches; }
+  function scrollMode() { return reduceMotion() ? 'auto' : 'smooth'; }
+  function toArray(list) { return Array.prototype.slice.call(list); }
+
+  /* ---------- hero word sequence ---------- */
+  function initSplit() {
+    toArray(document.querySelectorAll('[data-split]')).forEach(function (el) {
+      var index = 0;
+      toArray(el.childNodes).forEach(function (node) {
+        if (node.nodeType !== 3) return;
+        var frag = document.createDocumentFragment();
+        node.textContent.split(/(\s+)/).forEach(function (part) {
+          if (!part.trim()) { frag.appendChild(document.createTextNode(part.replace(/\s+/g, ' '))); return; }
+          var span = document.createElement('span');
+          span.className = 'hero__word';
+          span.textContent = part;
+          span.style.animationDelay = (0.12 + index * 0.035).toFixed(3) + 's';
+          index += 1;
+          frag.appendChild(span);
+        });
+        el.replaceChild(frag, node);
+      });
+    });
+  }
+
+  /* ---------- capabilities ticker ---------- */
+  function initTicker() {
+    var track = document.querySelector('[data-ticker]');
+    if (!track) return;
+    var cells = ['Capabilities', 'Brand Identity', 'Product Engineering', 'MVP Development',
+                 'Web Platforms', 'UI/UX Strategy', 'Growth Marketing'];
+
+    for (var copy = 0; copy < 4; copy++) {
+      var group = document.createElement('ul');
+      group.className = 'ticker__group';
+      if (copy > 0) group.setAttribute('aria-hidden', 'true');
+      cells.forEach(function (cell, i) {
+        var item = document.createElement('li');
+        item.className = 'ticker__item' + (i === 0 ? ' ticker__item--label' : '');
+        item.textContent = cell;
+        group.appendChild(item);
+        var sep = document.createElement('li');
+        sep.className = 'ticker__sep';
+        sep.setAttribute('aria-hidden', 'true');
+        sep.textContent = '/';
+        group.appendChild(sep);
+      });
+      track.appendChild(group);
+    }
+  }
+
+  /* ---------- scroll progress ---------- */
+  function initProgress() {
+    var bar = document.querySelector('.scroll-progress');
+    if (!bar) return;
+    var ticking = false;
+    function render() {
+      ticking = false;
+      var max = document.documentElement.scrollHeight - window.innerHeight;
+      var ratio = max > 0 ? Math.min(1, Math.max(0, window.scrollY / max)) : 0;
+      bar.style.transform = 'scaleX(' + ratio.toFixed(4) + ')';
+    }
+    window.addEventListener('scroll', function () {
+      if (ticking) return;
+      ticking = true;
+      window.requestAnimationFrame(render);
+    }, { passive: true });
+    render();
+  }
+
+  /* ---------- accordion ---------- */
+  function initAccordion(list) {
+    var exclusive = list.getAttribute('data-accordion-exclusive') === 'true';
+    var toggles = toArray(list.querySelectorAll('[aria-controls]'));
+
+    function setOpen(toggle, open) {
+      var panel = document.getElementById(toggle.getAttribute('aria-controls'));
+      if (!panel) return;
+      toggle.setAttribute('aria-expanded', String(open));
+      if (open) panel.removeAttribute('data-collapsed');
+      else panel.setAttribute('data-collapsed', '');
+    }
+
+    toggles.forEach(function (toggle, i) {
+      setOpen(toggle, toggle.getAttribute('aria-expanded') === 'true');
+      toggle.addEventListener('click', function () {
+        var willOpen = toggle.getAttribute('aria-expanded') !== 'true';
+        if (exclusive && willOpen) {
+          toggles.forEach(function (other) { if (other !== toggle) setOpen(other, false); });
+        }
+        setOpen(toggle, willOpen);
+      });
+      toggle.addEventListener('keydown', function (e) {
+        var next = null;
+        if (e.key === 'ArrowDown') next = toggles[(i + 1) % toggles.length];
+        else if (e.key === 'ArrowUp') next = toggles[(i - 1 + toggles.length) % toggles.length];
+        else if (e.key === 'Home') next = toggles[0];
+        else if (e.key === 'End') next = toggles[toggles.length - 1];
+        if (next) { e.preventDefault(); next.focus(); }
+      });
+    });
+  }
+
+  /* ---------- mobile nav ---------- */
+  function initNavToggle(toggle) {
+    var header = toggle.closest('.site-header');
+    var label = toggle.querySelector('.nav-toggle__label');
+    var nav = document.getElementById(toggle.getAttribute('aria-controls'));
+    if (!header || !nav) return;
+
+    function setOpen(open) {
+      toggle.setAttribute('aria-expanded', String(open));
+      toggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+      if (open) header.setAttribute('data-nav-open', '');
+      else header.removeAttribute('data-nav-open');
+      if (label) label.textContent = open ? 'Close' : 'Menu';
+    }
+    function isOpen() { return toggle.getAttribute('aria-expanded') === 'true'; }
+
+    toggle.addEventListener('click', function (e) { e.stopPropagation(); setOpen(!isOpen()); });
+    nav.addEventListener('click', function (e) {
+      var link = e.target && e.target.closest ? e.target.closest('a[href^="#"]') : null;
+      if (link) setOpen(false);
+    });
+    document.addEventListener('click', function (e) {
+      if (!isOpen()) return;
+      if (nav.contains(e.target) || toggle.contains(e.target)) return;
+      setOpen(false);
+    });
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && isOpen()) { setOpen(false); toggle.focus(); }
+    });
+
+    var wide = window.matchMedia('(min-width: 901px)');
+    wide.addEventListener('change', function (e) { if (e.matches) setOpen(false); });
+    if (wide.matches) setOpen(false);
+  }
+
+  /* ---------- scroll reveal ---------- */
+  function initReveal() {
+    var targets = toArray(document.querySelectorAll('[data-reveal]'));
+    if (!targets.length) return;
+    function revealAll() { targets.forEach(function (el) { el.classList.add('is-revealed'); }); }
+    if (!('IntersectionObserver' in window) || reduceMotion()) { revealAll(); return; }
+
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (!entry.isIntersecting) return;
+        entry.target.classList.add('is-revealed');
+        io.unobserve(entry.target);
+      });
+    }, { rootMargin: '0px 0px -8% 0px', threshold: 0.05 });
+
+    targets.forEach(function (el) { io.observe(el); });
+
+    window.setTimeout(function () {
+      targets.forEach(function (el) {
+        if (el.classList.contains('is-revealed')) return;
+        var box = el.getBoundingClientRect();
+        if (box.top < window.innerHeight && box.bottom > 0) el.classList.add('is-revealed');
+      });
+    }, 2000);
+  }
+
+  /* ---------- scroll spy ---------- */
+  function initScrollSpy() {
+    var main = document.getElementById('main');
+    if (!main || !('IntersectionObserver' in window)) return;
+
+    var links = {};
+    toArray(document.querySelectorAll('.nav__link[href^="#"]')).forEach(function (link) {
+      links[link.getAttribute('href').slice(1)] = link;
+    });
+
+    var ids = ['services', 'contact'].filter(function (id) { return document.getElementById(id); });
+    if (!ids.length) return;
+
+    var visible = Object.create(null);
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) { visible[e.target.id] = e.isIntersecting; });
+      var current = null;
+      ids.forEach(function (id) { if (visible[id]) current = id; });
+      if (!current) current = 'top';
+      Object.keys(links).forEach(function (id) {
+        if (id === current) links[id].setAttribute('aria-current', 'true');
+        else links[id].removeAttribute('aria-current');
+      });
+    }, { rootMargin: '-45% 0px -45% 0px' });
+
+    ids.forEach(function (id) { io.observe(document.getElementById(id)); });
+  }
+
+  /* ---------- copy to clipboard ---------- */
+  function initCopy(button) {
+    var label = button.querySelector('.copy__label');
+    var original = label ? label.textContent : '';
+    var timer;
+
+    function legacyCopy(text) {
+      var field = document.createElement('textarea');
+      field.value = text;
+      field.setAttribute('readonly', '');
+      field.style.cssText = 'position:absolute;left:-9999px;top:0';
+      document.body.appendChild(field);
+      field.select();
+      var ok = false;
+      try { ok = document.execCommand('copy'); } catch (err) { ok = false; }
+      document.body.removeChild(field);
+      return ok;
+    }
+
+    button.addEventListener('click', function () {
+      var text = button.getAttribute('data-copy') || '';
+      if (!text) return;
+      var done = function (ok) {
+        if (!label) return;
+        label.textContent = ok ? 'Copied' : 'Copy failed';
+        button.setAttribute('data-copied', '');
+        window.clearTimeout(timer);
+        timer = window.setTimeout(function () {
+          label.textContent = original;
+          button.removeAttribute('data-copied');
+        }, 2000);
+      };
+      if (navigator.clipboard && window.isSecureContext) {
+        navigator.clipboard.writeText(text).then(function () { done(true); }, function () { done(legacyCopy(text)); });
+      } else {
+        done(legacyCopy(text));
+      }
+    });
+  }
+
+  /* ---------- contact form ---------- */
+  function initForm(form) {
+    var body = form.querySelector('.form__body');
+    var status = form.querySelector('.form__status');
+    var submit = form.querySelector('[type="submit"]');
+    var fields = toArray(form.querySelectorAll('.field__input'));
+    var trap = form.querySelector('.field--trap input');
+    var validated = false;
+    var sending = false;
+
+    var rules = {
+      name: function (v) {
+        if (!v.trim()) return 'Please enter your name.';
+        if (v.trim().length < 2) return 'That name looks too short.';
+        return '';
+      },
+      email: function (v) {
+        if (!v.trim()) return 'Please enter your email address.';
+        if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v.trim())) return 'Please enter a valid email address.';
+        return '';
+      },
+      projectType: function (v) { return v ? '' : 'Please choose a project type.'; },
+      message: function (v) {
+        if (!v.trim()) return 'Please tell us about the project.';
+        if (v.trim().length < 10) return 'A little more detail would help.';
+        return '';
+      }
+    };
+
+    function check(field) {
+      var rule = rules[field.name];
+      var error = rule ? rule(field.value) : '';
+      var box = document.getElementById('error-' + field.name);
+      if (error) {
+        field.setAttribute('aria-invalid', 'true');
+        if (box) { box.textContent = error; box.hidden = false; }
+      } else {
+        field.removeAttribute('aria-invalid');
+        if (box) { box.textContent = ''; box.hidden = true; }
+      }
+      return !error;
+    }
+
+    fields.forEach(function (field) {
+      var revalidate = function () { if (validated) check(field); };
+      field.addEventListener('input', revalidate);
+      field.addEventListener('change', revalidate);
+      field.addEventListener('blur', revalidate);
+    });
+
+    var counter = form.querySelector('[data-count-for]');
+    var counted = counter ? document.getElementById(counter.getAttribute('data-count-for')) : null;
+    var max = counted ? (counted.getAttribute('maxlength') || '600') : '600';
+    if (counted) {
+      var render = function () { counter.textContent = counted.value.length + ' / ' + max; };
+      counted.addEventListener('input', render);
+      render();
+    }
+
+    function setStatus(text, state) {
+      if (!status) return;
+      status.textContent = text;
+      status.classList.toggle('form__dots', state === 'sending');
+      if (state === 'error') status.setAttribute('data-state', 'error');
+      else status.removeAttribute('data-state');
+    }
+
+    function showSuccess(first) {
+      var panel = document.createElement('div');
+      panel.className = 'form__success';
+      panel.setAttribute('role', 'status');
+      panel.setAttribute('aria-live', 'polite');
+      panel.innerHTML =
+        '<svg class="form__success-mark" viewBox="0 0 26 26" aria-hidden="true">' +
+        '<path d="M2 13.6 L9.4 21 L24 5" stroke-dasharray="40" stroke-dashoffset="40">' +
+        '<animate attributeName="stroke-dashoffset" from="40" to="0" dur="0.55s" begin="0.12s" fill="freeze"/>' +
+        '</path></svg>' +
+        '<p class="form__success-title">Thank you' + (first ? ', ' + first : '') + '. Your message is with us.</p>' +
+        '<p class="form__success-copy">We read every enquiry and reply within two working days. If it is urgent, call +27 63 946 4108.</p>' +
+        '<button class="form__success-again" type="button">Send another message</button>';
+
+      body.hidden = true;
+      form.appendChild(panel);
+      panel.querySelector('.form__success-again').addEventListener('click', function () {
+        panel.remove();
+        body.hidden = false;
+        setStatus('', null);
+      });
+    }
+
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      if (sending) return;
+      validated = true;
+
+      var invalid = fields.filter(function (f) { return !check(f); });
+      if (invalid.length) {
+        setStatus(invalid.length === 1 ? 'One field needs attention.' : invalid.length + ' fields need attention.', 'error');
+        invalid[0].focus();
+        return;
+      }
+
+      var data = {};
+      fields.forEach(function (f) { data[f.name] = f.value.trim(); });
+      var first = (data.name || '').split(' ')[0];
+
+      function reset() {
+        form.reset();
+        validated = false;
+        sending = false;
+        if (submit) submit.disabled = false;
+        fields.forEach(function (f) {
+          f.removeAttribute('aria-invalid');
+          var box = document.getElementById('error-' + f.name);
+          if (box) { box.textContent = ''; box.hidden = true; }
+        });
+        if (counter && counted) counter.textContent = '0 / ' + max;
+        setStatus('', null);
+      }
+
+      if (trap && trap.value) { reset(); showSuccess(first); return; }
+
+      sending = true;
+      if (submit) submit.disabled = true;
+      setStatus('Sending', 'sending');
+
+      var controller = ('AbortController' in window) ? new AbortController() : null;
+      var timeout = window.setTimeout(function () { if (controller) controller.abort(); }, 15000);
+
+      var options = {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+        body: JSON.stringify({
+          name: data.name,
+          email: data.email,
+          projectType: data.projectType,
+          message: data.message
+        })
+      };
+      if (controller) options.signal = controller.signal;
+
+      fetch(ENDPOINT, options).then(function () {
+        window.clearTimeout(timeout);
+        reset();
+        showSuccess(first);
+      }).catch(function () {
+        window.clearTimeout(timeout);
+        sending = false;
+        if (submit) submit.disabled = false;
+        setStatus('That did not send. Please email info@youngtimbers.co.za instead.', 'error');
+      });
+    });
+  }
+
+  /* ---------- back to top ---------- */
+  function initBackToTop() {
+    toArray(document.querySelectorAll('a[href="#top"]')).forEach(function (link) {
+      link.addEventListener('click', function (e) {
+        e.preventDefault();
+        window.scrollTo({ top: 0, behavior: scrollMode() });
+        try {
+          if (window.history && window.history.replaceState) {
+            window.history.replaceState(null, '', window.location.pathname + window.location.search);
+          }
+        } catch (err) { /* the scroll already happened */ }
+      });
+    });
+  }
+
+  /* ---------- contact carousel ---------- */
+  function initContactCarousel() {
+    var track = document.getElementById('contact-carousel');
+    var dotsWrap = document.querySelector('.contact__dots');
+    if (!track || !dotsWrap) return;
+
+    var slides = toArray(track.querySelectorAll('.contact__slide'));
+    var dots = toArray(dotsWrap.querySelectorAll('.contact__dot'));
+    if (slides.length < 2 || dots.length !== slides.length) return;
+
+    var mq = window.matchMedia('(max-width: 600px)');
+    var active = 0, on = false, heights = [], frame = null, syncFrame = null;
+    var lastHeight = -1, resizeObserver = null;
+
+    function label(i) { return slides[i].getAttribute('data-slide-label') || ('Slide ' + (i + 1)); }
+    function measure() { heights = slides.map(function (s) { return s.offsetHeight; }); }
+
+    function applyHeight() {
+      if (!on) return;
+      var width = track.clientWidth;
+      if (!width || !heights.length) return;
+      var position = track.scrollLeft / width;
+      var from = Math.max(0, Math.min(slides.length - 1, Math.floor(position)));
+      var to = Math.max(0, Math.min(slides.length - 1, from + 1));
+      var ratio = Math.max(0, Math.min(1, position - from));
+      var height = Math.round(heights[from] + (heights[to] - heights[from]) * ratio);
+      if (height > 0 && height !== lastHeight) { lastHeight = height; track.style.height = height + 'px'; }
+    }
+
+    function setActive(index) {
+      active = Math.max(0, Math.min(slides.length - 1, index));
+      dots.forEach(function (dot, i) {
+        var current = i === active;
+        dot.classList.toggle('is-active', current);
+        if (on) dot.setAttribute('aria-current', current ? 'true' : 'false');
+        else dot.removeAttribute('aria-current');
+      });
+    }
+
+    function goTo(index, behavior) {
+      if (!on) return;
+      var target = slides[Math.max(0, Math.min(slides.length - 1, index))];
+      if (!target) return;
+      track.scrollTo({ left: target.offsetLeft - slides[0].offsetLeft, behavior: behavior || scrollMode() });
+      setActive(index);
+    }
+
+    function onScroll() {
+      if (!on) return;
+      if (frame) window.cancelAnimationFrame(frame);
+      frame = window.requestAnimationFrame(function () {
+        frame = null;
+        applyHeight();
+        var width = track.clientWidth;
+        if (!width) return;
+        setActive(Math.round(track.scrollLeft / width));
+      });
+    }
+
+    dotsWrap.addEventListener('keydown', function (e) {
+      var index = dots.indexOf(document.activeElement);
+      if (index < 0) return;
+      var next = null;
+      if (e.key === 'ArrowRight') next = (index + 1) % dots.length;
+      else if (e.key === 'ArrowLeft') next = (index - 1 + dots.length) % dots.length;
+      else if (e.key === 'Home') next = 0;
+      else if (e.key === 'End') next = dots.length - 1;
+      if (next === null) return;
+      e.preventDefault();
+      dots[next].focus();
+      goTo(next);
+    });
+
+    dots.forEach(function (dot, i) { dot.addEventListener('click', function () { goTo(i); }); });
+    track.addEventListener('scroll', onScroll, { passive: true });
+
+    function enable() {
+      on = true;
+      track.classList.add('is-carousel');
+      dotsWrap.classList.add('is-carousel');
+      track.setAttribute('role', 'group');
+      track.setAttribute('aria-roledescription', 'carousel');
+      track.setAttribute('aria-label', 'Ways to get in touch');
+      track.setAttribute('tabindex', '0');
+      slides.forEach(function (slide, i) {
+        slide.setAttribute('role', 'group');
+        slide.setAttribute('aria-roledescription', 'slide');
+        slide.setAttribute('aria-label', (i + 1) + ' of ' + slides.length + ': ' + label(i));
+      });
+      measure();
+      setActive(Math.round(track.scrollLeft / (track.clientWidth || 1)));
+      applyHeight();
+      if ('ResizeObserver' in window && !resizeObserver) {
+        resizeObserver = new ResizeObserver(function () { measure(); applyHeight(); });
+        slides.forEach(function (slide) { resizeObserver.observe(slide); });
+      }
+    }
+
+    function disable() {
+      on = false;
+      track.classList.remove('is-carousel');
+      dotsWrap.classList.remove('is-carousel');
+      track.style.height = '';
+      track.scrollLeft = 0;
+      lastHeight = -1;
+      ['role', 'aria-roledescription', 'aria-label', 'tabindex'].forEach(function (a) { track.removeAttribute(a); });
+      slides.forEach(function (slide) {
+        ['role', 'aria-roledescription', 'aria-label'].forEach(function (a) { slide.removeAttribute(a); });
+      });
+      dots.forEach(function (dot) { dot.removeAttribute('aria-current'); });
+      if (resizeObserver) { resizeObserver.disconnect(); resizeObserver = null; }
+    }
+
+    function sync() {
+      if (mq.matches && !on) enable();
+      else if (!mq.matches && on) disable();
+      else if (on) { measure(); applyHeight(); }
+    }
+
+    function queueSync() {
+      if (syncFrame) return;
+      syncFrame = window.requestAnimationFrame(function () { syncFrame = null; sync(); });
+    }
+
+    mq.addEventListener('change', queueSync);
+    window.addEventListener('resize', queueSync);
+    window.addEventListener('orientationchange', function () { window.setTimeout(queueSync, 200); });
+    sync();
+
+    toArray(document.querySelectorAll('[data-contact-target="form"]')).forEach(function (link) {
+      link.addEventListener('click', function () {
+        if (!on) return;
+        window.setTimeout(function () { goTo(slides.length - 1); }, 250);
+      });
+    });
+  }
+
+  function initYear() {
+    toArray(document.querySelectorAll('[data-current-year]')).forEach(function (el) {
+      el.textContent = String(new Date().getFullYear());
+    });
+  }
+
+  initSplit();
+  initTicker();
+  initProgress();
+  toArray(document.querySelectorAll('.js-accordion')).forEach(initAccordion);
+  toArray(document.querySelectorAll('.nav-toggle')).forEach(initNavToggle);
+  toArray(document.querySelectorAll('.copy')).forEach(initCopy);
+  toArray(document.querySelectorAll('.js-form')).forEach(initForm);
+  initReveal();
+  initScrollSpy();
+  initBackToTop();
+  initContactCarousel();
+  initYear();
+})();
+</script>
+</body>
+</html>
