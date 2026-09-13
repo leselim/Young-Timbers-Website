@@ -31,7 +31,7 @@ export default function Hero() {
                     {token}
                   </motion.span>
                   {/* a real space, so the headline still wraps normally */}
-                  {i < all.length - 1 ? ' ' : null}
+                  {i < all.length - 1 || lineIndex < LINES.length - 1 ? ' ' : null}
                 </span>
               ))}
               {lineIndex < LINES.length - 1 && <br className="lb" />}
