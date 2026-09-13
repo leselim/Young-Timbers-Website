@@ -52,7 +52,7 @@ export default function Hero() {
             <li className="meta__dash" aria-hidden="true">/</li>
             <li>South Africa / Remote</li>
           </ul>
-          <a className="btn btn--ghost" href="#services">
+          <a className="btn btn--ghost" href="#services" aria-label="Explore Services">
             <span>Explore Services</span>
           </a>
         </motion.div>

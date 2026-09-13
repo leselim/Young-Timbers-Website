@@ -69,7 +69,7 @@ export default function Services() {
             We build full-spectrum digital products from zero to one, combining strategic branding
             with robust engineering and market distribution.
           </p>
-          <a className="btn btn--solid" href="#contact" data-contact-target="form">
+          <a className="btn btn--solid" href="#contact" data-contact-target="form" aria-label="Start a Project">
             <span>Start a Project</span>
           </a>
         </div>
@@ -87,6 +87,7 @@ export default function Services() {
                     ref={(el) => { toggles.current[index] = el; }}
                     aria-expanded={expanded}
                     aria-controls={panelId}
+                    aria-label={`Toggle details for ${service.name}`}
                     onClick={() => toggle(service.id)}
                     onKeyDown={(e) => onKeyDown(e, index)}
                   >

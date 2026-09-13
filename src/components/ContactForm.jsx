@@ -287,7 +287,12 @@ export default function ContactForm({ id, slideLabel }) {
             </div>
 
             <div className="form__foot">
-              <button className="btn btn--solid" type="submit" disabled={sending}>
+              <button
+                className="btn btn--solid"
+                type="submit"
+                disabled={sending}
+                aria-label={sending ? 'Sending message' : 'Send Message'}
+              >
                 <span>{sending ? 'Sending' : 'Send Message'}</span>
               </button>
               <p

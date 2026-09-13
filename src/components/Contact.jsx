@@ -46,7 +46,7 @@ function CopyButton({ value }) {
       className="copy"
       type="button"
       onClick={onClick}
-      aria-label="Copy email address"
+      aria-label={label === 'Copied' ? 'Email address copied' : label === 'Copy failed' ? 'Failed to copy email address' : 'Copy email address'}
       {...(label !== 'Copy' ? { 'data-copied': '' } : {})}
     >
       <motion.span
@@ -273,13 +273,13 @@ export default function Contact() {
               <li className="detail">
                 <span className="detail__label">Email</span>
                 <span className="detail__value">
-                  <a href={`mailto:${EMAIL}`}>{EMAIL}</a>
+                  <a href={`mailto:${EMAIL}`} aria-label={`Send email to ${EMAIL}`}>{EMAIL}</a>
                   <CopyButton value={EMAIL} />
                 </span>
               </li>
               <li className="detail">
                 <span className="detail__label">Phone</span>
-                <span className="detail__value"><a href="tel:+27639464108">+27 63 946 4108</a></span>
+                <span className="detail__value"><a href="tel:+27639464108" aria-label="Call studio at +27 63 946 4108">+27 63 946 4108</a></span>
               </li>
               <li className="detail">
                 <span className="detail__label">Studio</span>
@@ -296,6 +296,7 @@ export default function Contact() {
             className={`contact__dot${active === 0 ? ' is-active' : ''}`}
             type="button"
             onClick={() => goTo(0)}
+            aria-label="Show contact details"
             {...(on ? { 'aria-current': active === 0 ? 'true' : 'false' } : {})}
           >
             <span className="visually-hidden">Show contact details</span>
@@ -304,6 +305,7 @@ export default function Contact() {
             className={`contact__dot${active === 1 ? ' is-active' : ''}`}
             type="button"
             onClick={() => goTo(1)}
+            aria-label="Show the message form"
             {...(on ? { 'aria-current': active === 1 ? 'true' : 'false' } : {})}
           >
             <span className="visually-hidden">Show the message form</span>
