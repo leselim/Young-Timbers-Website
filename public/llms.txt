@@ -1,17 +1,18 @@
 # Young Timbers
-> Digital Product and Venture Studio based in South Africa.
+> Digital Product & Venture Studio based in South Africa.
 
-## Summary
-Young Timbers designs and engineers scalable software, full-stack React web applications, distinct brand identities, and MVP development for modern businesses and startups.
+## About Young Timbers
+Young Timbers partners with ambitious founders and forward-thinking enterprises to design, build, and scale world-class digital products. We merge strategic brand identity, bespoke UI/UX design, high-performance web engineering, and venture development to turn bold ideas into category-defining market leaders.
 
-## Core Services
-- Product Engineering & Web Development
-- Brand Identity & Digital Design
-- MVP Development & Venture Strategy
-- Growth Marketing
+## Core Capabilities
+- **Venture & MVP Development:** Validating, prototyping, and launching market-ready products with speed and precision.
+- **Product Engineering & Architecture:** Crafting robust, scalable, and secure digital platforms engineered for performance and growth.
+- **Brand Identity & Creative Direction:** Building distinctive, memorable visual languages and design systems that command attention.
+- **Digital Strategy & Growth:** Designing high-converting user journeys, product-led marketing, and scalable digital experiences.
 
-## Contact & Links
-- Website: https://youngtimbers.co.za
-- Email: info@youngtimbers.co.za
-- Phone: +27639464108
-- Location: Cape Town / Johannesburg, South Africa
+## Company Overview
+- **Category:** Venture Studio, Digital Product Agency, Software & Brand Consultancy
+- **Primary Website:** https://youngtimbers.co.za
+- **Direct Inquiries:** info@youngtimbers.co.za
+- **Headquarters:** Cape Town & Johannesburg, South Africa
+- **Markets Served:** South Africa & Global
