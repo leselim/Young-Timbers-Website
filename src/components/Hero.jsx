@@ -41,7 +41,7 @@ export default function Hero() {
 
         <div className="hero__sub">
           <motion.p className="hero__lede" variants={tail}>
-            A digital product and venture studio building scalable software, distinct brand
+            A digital product studio building scalable software, distinct brand
             identities, and growth marketing for modern businesses.
           </motion.p>
         </div>

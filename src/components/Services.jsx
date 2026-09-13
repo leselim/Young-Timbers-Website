@@ -6,7 +6,7 @@ const SERVICES = [
   {
     id: 1,
     name: 'Brand Strategy & Identity',
-    copy: 'Positioning, messaging frameworks, and visual identities designed to give modern digital ventures a distinct market presence.',
+    copy: 'Positioning, messaging frameworks, and visual identities designed to give modern digital brands a distinct market presence.',
   },
   {
     id: 2,
