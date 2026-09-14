@@ -1295,6 +1295,7 @@ h1, h2, h3, p, li, a { overflow-wrap: break-word; }
   width: 100%;
   aspect-ratio: 4 / 5;
   object-fit: cover;
+  object-position: 50% 8%;
   border-radius: 0;
   box-shadow: none;
   border: none;
