@@ -29,25 +29,16 @@ export const sectionReveal = {
 
 export const VIEWPORT = { once: true, amount: 0.12, margin: '0px 0px -8% 0px' };
 
-/* Page-load sequence for the hero. */
+/* Page-load sequence for the hero line reveal. */
 export const heroGroup = {
   hidden: {},
   visible: {
-    transition: { delayChildren: 0.12, staggerChildren: 0.035 },
+    transition: { delayChildren: 0.12, staggerChildren: 0.08 },
   },
 };
 
-export const heroWord = {
-  hidden: { opacity: 0, y: '0.5em' },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.7, ease: EASE_OUT },
-  },
-};
-
-export const heroTail = {
-  hidden: { opacity: 0, y: 10 },
+export const heroLine = {
+  hidden: { opacity: 0, y: '100%' },
   visible: {
     opacity: 1,
     y: 0,

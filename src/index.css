@@ -194,6 +194,16 @@ h1, h2, h3, p, li, a { overflow-wrap: break-word; }
   text-wrap: balance;
 }
 
+.hero__line-mask {
+  display: block;
+  overflow: hidden;
+}
+
+.hero__line {
+  display: block;
+  will-change: transform, opacity;
+}
+
 .hero__sub {
   display: grid;
   grid-template-columns: 60% 1fr;
@@ -693,6 +703,12 @@ h1, h2, h3, p, li, a { overflow-wrap: break-word; }
   }
 
   .lb { display: none; }
+
+  .hero__line-mask {
+    display: inline-block;
+    vertical-align: top;
+    max-width: 100%;
+  }
 
   .hero { padding-block: var(--space-5); }
   .hero__title { max-width: 100%; }
