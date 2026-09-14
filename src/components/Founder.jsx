@@ -22,8 +22,8 @@ export default function Founder() {
             className="founder__portrait"
             src={PORTRAIT}
             alt="Leseli Morakile, founder of Young Timbers"
-            width="720"
-            height="900"
+            width="1052"
+            height="1495"
             loading="lazy"
             decoding="async"
           />
