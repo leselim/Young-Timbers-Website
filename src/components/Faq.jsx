@@ -41,16 +41,15 @@ const FAQS = [
 ];
 
 export default function Faq() {
-  /* Questions start closed. Services rows stay open because they
-     read as a list; a question only earns its space once asked. */
-  const [open, setOpen] = useState([]);
+  /* Questions start closed by default. Single-open behavior closes any
+     active question when a new question is opened. */
+  const [open, setOpen] = useState(null);
   const toggles = useRef([]);
   const reduce = useReducedMotion();
   const reveal = reduce ? still(sectionReveal) : sectionReveal;
 
-  const isOpen = (id) => open.includes(id);
-  const toggle = (id) =>
-    setOpen((prev) => (prev.includes(id) ? prev.filter((x) => x !== id) : [...prev, id]));
+  const isOpen = (id) => open === id;
+  const toggle = (id) => setOpen((prev) => (prev === id ? null : id));
 
   /* Arrow keys move between headers - the WAI-ARIA accordion pattern. */
   const onKeyDown = (e, index) => {
