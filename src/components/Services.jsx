@@ -26,16 +26,15 @@ const SERVICES = [
 ];
 
 export default function Services() {
-  /* Only the first row starts open by default to signal interactivity
-     while keeping the list concise and expandable. */
-  const [open, setOpen] = useState(() => [SERVICES[0].id]);
+  /* Only the first row starts open by default. Single-open behavior
+     closes any active row when a new row is opened. */
+  const [open, setOpen] = useState(SERVICES[0].id);
   const toggles = useRef([]);
   const reduce = useReducedMotion();
   const reveal = reduce ? still(sectionReveal) : sectionReveal;
 
-  const isOpen = (id) => open.includes(id);
-  const toggle = (id) =>
-    setOpen((prev) => (prev.includes(id) ? prev.filter((x) => x !== id) : [...prev, id]));
+  const isOpen = (id) => open === id;
+  const toggle = (id) => setOpen((prev) => (prev === id ? null : id));
 
   /* Arrow keys move between headers - the WAI-ARIA accordion pattern. */
   const onKeyDown = (e, index) => {
