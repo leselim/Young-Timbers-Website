@@ -3,6 +3,7 @@ import Hero from './components/Hero.jsx';
 import Capabilities from './components/Capabilities.jsx';
 import Services from './components/Services.jsx';
 import Faq from './components/Faq.jsx';
+import Founder from './components/Founder.jsx';
 import Contact from './components/Contact.jsx';
 import Footer from './components/Footer.jsx';
 
@@ -18,6 +19,7 @@ export default function App() {
         <Capabilities />
         <Services />
         <Faq />
+        <Founder />
         <Contact />
       </main>
 
