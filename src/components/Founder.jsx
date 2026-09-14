@@ -40,9 +40,9 @@ export default function Founder() {
             </p>
             <p>
               Leseli works across brand, product and code, and does not draw hard lines
-              between them. That range is the studio. It is why the brand and the software
-              are made by the same hands, and why the person who scopes your project is
-              the person who does the work.
+              between them. That range set the studio's direction: brand and engineering
+              treated as one discipline rather than two departments, and senior attention
+              on the work from the first conversation to handover.
             </p>
             <p>
               Young Timbers is named for what it is: something young, growing, and built
