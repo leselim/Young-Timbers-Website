@@ -26,9 +26,9 @@ const SERVICES = [
 ];
 
 export default function Services() {
-  /* Rows start open, exactly as they did before, so the section
-     still reads as a list rather than a set of closed drawers. */
-  const [open, setOpen] = useState(() => SERVICES.map((s) => s.id));
+  /* Only the first row starts open by default to signal interactivity
+     while keeping the list concise and expandable. */
+  const [open, setOpen] = useState(() => [SERVICES[0].id]);
   const toggles = useRef([]);
   const reduce = useReducedMotion();
   const reveal = reduce ? still(sectionReveal) : sectionReveal;
