@@ -10,6 +10,11 @@ Young Timbers partners with ambitious founders and forward-thinking enterprises 
 - **Brand Identity & Creative Direction:** Building distinctive, memorable visual languages and design systems that command attention.
 - **Digital Strategy & Growth:** Designing high-converting user journeys, product-led marketing, and scalable digital experiences.
 
+## Selected Case Study
+- **threshold:** An operations platform for South African residential estates. Gates, visitors, contractors, and reporting in one view.
+  - Case study: https://youngtimbers.co.za/work/threshold
+  - Live interactive demo: https://youngtimbers.co.za/work/threshold/demo.html
+
 ## Company Overview
 - **Category:** Digital Product Studio, Software & Brand Consultancy
 - **Primary Website:** https://youngtimbers.co.za

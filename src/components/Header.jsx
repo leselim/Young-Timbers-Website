@@ -7,6 +7,7 @@ const LOGO = '/young-timbers-logo.png';
 const LOGO_2X = '/young-timbers-logo@2x.png';
 
 const LINKS = [
+  { id: 'work', label: 'Work' },
   { id: 'top', label: 'About' },
   { id: 'services', label: 'Services' },
   { id: 'contact', label: 'Contact' },
@@ -65,7 +66,7 @@ export default function Header() {
 
   /* ---- which section is in view ---- */
   useEffect(() => {
-    const sections = ['services', 'contact']
+    const sections = ['work', 'services', 'contact']
       .map((id) => document.getElementById(id))
       .filter(Boolean);
     if (!sections.length || !('IntersectionObserver' in window)) return undefined;
@@ -86,8 +87,11 @@ export default function Header() {
 
   /* Keeps "#top" out of the address bar, as the static site did. */
   const onTop = (e) => {
-    e.preventDefault();
     close();
+    if (window.location.pathname !== '/') {
+      return;
+    }
+    e.preventDefault();
     window.scrollTo({ top: 0, behavior: reduce ? 'auto' : 'smooth' });
     try {
       window.history.replaceState(null, '', window.location.pathname + window.location.search);
@@ -95,6 +99,8 @@ export default function Header() {
       /* the scroll already happened */
     }
   };
+
+  const isHome = typeof window !== 'undefined' && window.location.pathname === '/';
 
   return (
     <header
@@ -104,7 +110,12 @@ export default function Header() {
       {...(navOpen ? { 'data-nav-open': '' } : {})}
     >
       <div className="container header__inner">
-        <a className="brand" href="#top" onClick={onTop} aria-label="Young Timbers, back to top">
+        <a
+          className="brand"
+          href={isHome ? '#top' : '/#top'}
+          onClick={onTop}
+          aria-label="Young Timbers, back to top"
+        >
           <img
             className="brand__logo"
             src={LOGO}
@@ -133,18 +144,21 @@ export default function Header() {
 
         <nav className="nav" id="site-nav" aria-label="Primary" ref={navRef}>
           <ul className="nav__list">
-            {LINKS.map((link) => (
-              <li key={link.id}>
-                <a
-                  className="nav__link"
-                  href={`#${link.id}`}
-                  onClick={link.id === 'top' ? onTop : close}
-                  {...(current === link.id ? { 'aria-current': 'true' } : {})}
-                >
-                  {link.label}
-                </a>
-              </li>
-            ))}
+            {LINKS.map((link) => {
+              const targetHref = isHome ? `#${link.id}` : `/#${link.id}`;
+              return (
+                <li key={link.id}>
+                  <a
+                    className="nav__link"
+                    href={targetHref}
+                    onClick={link.id === 'top' ? onTop : close}
+                    {...(current === link.id ? { 'aria-current': 'true' } : {})}
+                  >
+                    {link.label}
+                  </a>
+                </li>
+              );
+            })}
           </ul>
 
           <ul className="social" aria-label="Social">
