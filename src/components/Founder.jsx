@@ -39,10 +39,10 @@ export default function Founder() {
               that needed fixing, a business that needed to look like itself again.
             </p>
             <p>
-              A designer who learned to build, and a builder who never stopped designing.
-              That combination is the studio. It is why the brand and the software are
-              made by the same hands, and why the person who scopes your project is the
-              person who does the work.
+              Leseli works across brand, product and code, and does not draw hard lines
+              between them. That range is the studio. It is why the brand and the software
+              are made by the same hands, and why the person who scopes your project is
+              the person who does the work.
             </p>
             <p>
               Young Timbers is named for what it is: something young, growing, and built
