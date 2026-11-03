@@ -7,36 +7,36 @@ const FAQS = [
     id: 1,
     question: 'Who do you work with?',
     answer:
-      'Founders building something new, and established teams modernising platforms, workflows and customer facing systems.',
+      'Founders and startups taking a new product from idea to launch, growing businesses whose brand, product or platform needs to keep pace, and established organisations modernising platforms, workflows and customer facing systems.',
   },
   {
     id: 2,
     question: 'How does a project start?',
     answer:
-      'A conversation about what you are trying to build or fix, then a written scope with the price, the timeline and what falls outside it. Work begins once that is agreed.',
+      'With a conversation about what you want to build or fix and the opportunity behind it. We then send a written scope that sets out the price, the timeline and what falls outside it. Work begins once that is agreed.',
   },
   {
     id: 3,
     question: 'Do we own the code and the accounts?',
     answer:
-      'Yes. Code, repositories, hosting and third party accounts are yours, handed over with documentation at the end of the engagement.',
+      'Yes. The code, repositories, hosting and third party accounts are yours, and they are handed over with documentation at the end of the engagement.',
   },
   {
     id: 4,
     question: 'Can you work with our existing team?',
     answer:
-      'Yes. We can lead a build, or work alongside in-house designers and engineers on a defined part of it.',
+      'Yes. We can lead the full journey from brand to launch, or work alongside your in-house designers and engineers on a defined part of it, whether that is the brand, the product design, the build or the growth work.',
   },
   {
     id: 5,
     question: 'Do you support the product after launch?',
     answer:
-      'Yes, through a monthly retainer covering iteration, maintenance and support. It is optional and quoted separately.',
+      'Yes, through a monthly retainer covering iteration, maintenance and support. It is optional and quoted separately, and it can sit alongside ongoing growth work once the product is in market.',
   },
   {
     id: 6,
     question: 'Where are you based?',
-    answer: 'South Africa, working remotely with clients wherever they are.',
+    answer: 'We are based in South Africa and work remotely with clients wherever they are.',
   },
 ];
 

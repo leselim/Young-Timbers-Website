@@ -27,11 +27,13 @@ const css = readFileSync(resolve(root, 'src/index.css'), 'utf8')
 
 const logo = readFileSync(resolve(root, 'public/young-timbers-logo.png')).toString('base64');
 const favicon = readFileSync(resolve(root, 'public/favicon.svg')).toString('base64');
+const portrait = readFileSync(resolve(root, 'public/leseli-morakile.jpg')).toString('base64');
 
 const html = readFileSync(resolve(here, 'preview.template.html'), 'utf8')
   .replace('__CSS__', () => css)
   .replace('__LOGO__', () => `data:image/png;base64,${logo}`)
   .replace('__FAVICON__', () => `data:image/svg+xml;base64,${favicon}`)
+  .replace('__PORTRAIT__', () => `data:image/jpeg;base64,${portrait}`)
   .replace('__ENDPOINT__', () => ENDPOINT);
 
 writeFileSync(resolve(root, 'docs/preview.html'), html);

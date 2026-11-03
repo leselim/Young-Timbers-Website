@@ -34,13 +34,13 @@ export default function Founder() {
           <h2 className="founder__title">Leseli Morakile</h2>
           <div className="founder__body">
             <p>
-              Leseli started Young Timbers in 2019, before the studio had a name worth
+              Leseli started Young Timbers in 2019, before the company had a name worth
               printing. The work came first: a brand that needed rebuilding, a system
               that needed fixing, a business that needed to look like itself again.
             </p>
             <p>
               Leseli works across brand, product and code, and does not draw hard lines
-              between them. That range set the studio's direction: brand and engineering
+              between them. That range set the company's direction: brand and engineering
               treated as one discipline rather than two departments, and senior attention
               on the work from the first conversation to handover.
             </p>

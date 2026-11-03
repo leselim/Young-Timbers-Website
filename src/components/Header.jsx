@@ -8,7 +8,7 @@ const LOGO_2X = '/young-timbers-logo@2x.png';
 
 const LINKS = [
   { id: 'top', label: 'About' },
-  { id: 'services', label: 'Services' },
+  { id: 'services', label: 'Capabilities' },
   { id: 'contact', label: 'Contact' },
 ];
 

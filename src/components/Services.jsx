@@ -2,26 +2,32 @@ import { useRef, useState } from 'react';
 import { AnimatePresence, motion, useReducedMotion } from 'framer-motion';
 import { EASE, VIEWPORT, panelTransition, sectionReveal, still } from '../lib/motion.js';
 
+/* The four capability areas, in the same order as the process
+   above, so a stage and the work behind it share a number. */
 const SERVICES = [
   {
     id: 1,
     name: 'Brand Strategy & Identity',
-    copy: 'Positioning, messaging frameworks, and visual identities designed to give modern digital brands a distinct market presence.',
+    copy: 'A clear position and an identity people recognise, so the market understands what you offer and why it matters.',
+    points: ['Brand positioning', 'Brand strategy', 'Messaging frameworks', 'Visual identity development'],
   },
   {
     id: 2,
-    name: 'Product Design & Engineering',
-    copy: 'End-to-end product design, rapid MVP prototyping, scalable architecture, and custom web development.',
+    name: 'Product Design & Experience',
+    copy: 'Design grounded in research, so the product makes sense to the people using it from the first screen.',
+    points: ['Product strategy', 'UI/UX research', 'User experience design', 'Digital interface design'],
   },
   {
     id: 3,
-    name: 'Digital Platforms & UX',
-    copy: 'High-performance web applications, responsive user experiences, and systematic design foundations built to scale.',
+    name: 'Product Engineering & Technology',
+    copy: 'Working software built around how your business operates, from a first MVP to the platform it becomes.',
+    points: ['Product engineering', 'MVP development', 'Web application development', 'Digital platforms'],
   },
   {
     id: 4,
-    name: 'Growth & Digital Marketing',
-    copy: 'Go-to-market execution, performance marketing, content strategy, and conversion optimization to drive user acquisition.',
+    name: 'Growth & Market Development',
+    copy: 'The strategy and execution that put a product in front of the right audience and keep it growing after launch.',
+    points: ['Growth strategy', 'Growth marketing', 'Digital marketing', 'Audience acquisition and market positioning'],
   },
 ];
 
@@ -61,12 +67,11 @@ export default function Services() {
       <div className="container services__grid">
         <div className="services__intro">
           <p className="eyebrow">What we do</p>
-          <h2 className="services__title">
-            End-to-end product design, engineering, and growth for digital-first brands
-          </h2>
+          <h2 className="services__title">Our capabilities</h2>
           <p className="services__copy">
-            We build full-spectrum digital products from zero to one, combining strategic branding
-            with robust engineering and market distribution.
+            An integrated approach to building and growing digital businesses. We combine
+            strategic thinking, product design, engineering and market growth to deliver
+            solutions across the digital product lifecycle.
           </p>
           <a className="btn btn--solid" href="#contact" data-contact-target="form" aria-label="Start a Project">
             <span>Start a Project</span>
@@ -116,6 +121,11 @@ export default function Services() {
                     >
                       <div className="service__panel-inner">
                         <p>{service.copy}</p>
+                        <ul className="service__points" aria-label={`${service.name} includes`}>
+                          {service.points.map((point) => (
+                            <li key={point}>{point}</li>
+                          ))}
+                        </ul>
                       </div>
                     </motion.div>
                   )}

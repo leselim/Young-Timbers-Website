@@ -47,7 +47,8 @@ src/
   App.jsx               section order
   index.css             the original stylesheet + the interaction layer
   lib/motion.js         easing curves and shared variants
-  components/           Header, Hero, Capabilities, Services, Contact, ContactForm, Footer
+  components/           Header, Hero, Capabilities (ticker), Intro, Process, Services
+                        (Our capabilities), Faq, Founder, Contact, ContactForm, Footer
 build/                  generates the standalone preview
 docs/
   preview.html          single self-contained file, opens without a build step
@@ -63,7 +64,9 @@ than imported. That keeps the paths identical in development and in production.
 It mirrors the React app: same markup, same CSS, same interactions. Open it straight from
 the file system, email it, or drop it on any static host.
 
-Rebuild it after editing `src/index.css` so the two do not drift:
+The template in `build/preview.template.html` carries the same copy as the components, so
+copy changes need to be made in both places. Rebuild it after editing `src/index.css` or the
+template so the two do not drift:
 
 ```bash
 node build/build-preview.mjs
@@ -122,3 +125,11 @@ permanently.
 
 `docs/Young-Timbers-Design-Overview.pdf` covers the design system, the motion inventory,
 the lead-capture pipeline and the build in more detail.
+
+## Positioning (November 2026)
+
+The copy presents Young Timbers as a technology and digital product company. The homepage
+runs: hero, capabilities ticker, Intro (who we are), Process (From idea to impact, four
+stages), Our capabilities (four areas), FAQ, Founder, Contact. The new rows reuse the
+existing tokens, type scale and grid; their styles sit at the end of `src/index.css` under
+"REPOSITIONING ADDITIONS".

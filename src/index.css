@@ -1345,3 +1345,306 @@ h1, h2, h3, p, li, a { overflow-wrap: break-word; }
   .founder__grid { display: block; }
   .founder__portrait { max-width: 300px; }
 }
+
+/* =========================================================
+   REPOSITIONING ADDITIONS
+
+   Copy and structure for the technology and digital product
+   positioning. Nothing here introduces a new colour, font,
+   size or easing: every value is an existing token or is
+   copied from an existing rule (service names, section
+   titles, meta lines, hairlines) so the new rows read as
+   part of the same page.
+   ========================================================= */
+
+/* ---------- Hero: primary and secondary action ---------- */
+.hero__actions {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+/* The ghost button is 2px shorter than the solid one; side by
+   side they share a height so the pair sits on one baseline. */
+.hero__actions .btn--ghost { height: 36px; }
+
+@media (max-width: 560px) {
+  .hero__actions { width: 100%; }
+  .hero__actions .btn { flex: 1 1 auto; }
+}
+
+@media (max-width: 380px) {
+  .hero__actions { flex-direction: column; align-items: stretch; }
+  .hero__actions .btn { width: 100%; }
+}
+
+/* ---------- Intro: who we are ---------- */
+.intro {
+  padding-top: var(--space-6);
+  padding-bottom: var(--space-6);
+}
+
+.intro__grid {
+  display: grid;
+  grid-template-columns: 0.70fr 1fr;
+  gap: 56px;
+  align-items: start;
+}
+
+.intro__title {
+  margin-top: var(--space-3);
+  max-width: 380px;
+  font-size: clamp(20px, 2vw, 26px);
+  font-weight: 400;
+  line-height: 1.35;
+  letter-spacing: -0.015em;
+}
+
+/* Lines the paragraph up with the heading, not the eyebrow. */
+.intro__body { padding-top: 38px; }
+
+.intro__copy {
+  max-width: 520px;
+  font-size: 14px;
+  line-height: 1.75;
+  color: var(--text-secondary);
+}
+
+.intro__meta {
+  margin-top: var(--space-4);
+  font-size: var(--fs-nano);
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+/* ---------- Process: from idea to impact ---------- */
+.process {
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  padding-top: var(--space-6);
+  padding-bottom: var(--space-6);
+}
+
+.process__head {
+  display: grid;
+  grid-template-columns: 0.70fr 1fr;
+  gap: 56px;
+  align-items: end;
+}
+
+.process__title {
+  margin-top: var(--space-3);
+  font-size: clamp(20px, 2vw, 26px);
+  font-weight: 400;
+  line-height: 1.35;
+  letter-spacing: -0.015em;
+}
+
+.process__copy {
+  max-width: 485px;
+  font-size: 14px;
+  line-height: 1.75;
+  color: var(--text-secondary);
+}
+
+.process__steps {
+  list-style: none;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  column-gap: 28px;
+  margin-top: var(--space-6);
+}
+
+.step { min-width: 0; }
+
+/* Each stage shares the list's three rows (numeral, title, copy),
+   so titles and paragraphs start on the same line across all four
+   columns even when one title wraps and another does not. */
+.process__steps { grid-template-rows: auto auto auto; }
+.step {
+  display: grid;
+  grid-row: span 3;
+  grid-template-rows: subgrid;
+}
+@supports not (grid-template-rows: subgrid) {
+  .step { display: block; }
+  .step__title { min-height: 2.4em; }
+}
+
+.step__marker {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.step__num {
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 1.2;
+  letter-spacing: 0.01em;
+  color: var(--text-primary);
+  font-variant-numeric: tabular-nums;
+}
+
+/* The rule runs through the column gap and stops 14px short
+   of the next numeral, matching the space after its own. */
+.step__line {
+  flex: 1 1 auto;
+  height: 1px;
+  margin-right: -14px;
+  background: var(--border-strong);
+  transform-origin: 0 50%;
+}
+.step:last-child .step__line { margin-right: 0; }
+
+.step__title {
+  margin-top: 26px;
+  font-size: 21px;
+  font-weight: 400;
+  line-height: 1.2;
+  letter-spacing: -0.015em;
+  text-wrap: balance;
+}
+
+.step__copy {
+  margin-top: 14px;
+  font-size: 14px;
+  line-height: 1.7;
+  color: var(--text-secondary);
+}
+
+/* Draw-in: armed only when script is present to release it. */
+.process__steps[data-armed] .step {
+  opacity: 0;
+  transform: translateY(8px);
+  transition:
+    opacity 0.6s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+  transition-delay: calc(var(--i, 0) * 120ms);
+}
+.process__steps[data-armed] .step__line {
+  transform: scaleX(0);
+  transition: transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+  transition-delay: calc(240ms + var(--i, 0) * 180ms);
+}
+.process__steps.is-drawn .step { opacity: 1; transform: none; }
+.process__steps.is-drawn .step__line { transform: none; }
+
+/* Below 1080px four columns get too narrow to read, so the
+   rule turns vertical: numeral and line on the left, the stage
+   name and its copy beside it on the existing two-column grid. */
+@media (max-width: 1080px) {
+  .intro__grid, .process__head { gap: 44px; }
+
+  .process__steps {
+    grid-template-columns: 1fr;
+    grid-template-rows: none;
+    margin-top: var(--space-5);
+  }
+
+  .step {
+    display: grid;
+    grid-row: auto;
+    grid-template-rows: auto;
+    grid-template-columns: 28px minmax(0, 0.62fr) minmax(0, 1fr);
+    column-gap: 28px;
+  }
+
+  .step__marker {
+    grid-column: 1;
+    grid-row: 1 / span 2;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .step__line {
+    width: 1px;
+    height: auto;
+    min-height: 24px;
+    margin-right: 0;
+    transform-origin: 50% 0;
+  }
+  .process__steps[data-armed] .step__line { transform: scaleY(0); }
+  .process__steps.is-drawn .step__line { transform: none; }
+
+  .step__title {
+    grid-column: 2;
+    grid-row: 1;
+    margin-top: 0;
+    padding-bottom: var(--space-4);
+  }
+
+  .step__copy {
+    grid-column: 3;
+    grid-row: 1;
+    margin-top: 2px;
+    max-width: 485px;
+    padding-bottom: var(--space-4);
+  }
+
+  .step:last-child .step__title,
+  .step:last-child .step__copy { padding-bottom: 0; }
+}
+
+@media (max-width: 980px) {
+  .intro__grid,
+  .process__head { grid-template-columns: 1fr; gap: var(--space-3); }
+  .intro__body { padding-top: 0; }
+  .intro__title { max-width: 560px; }
+  .intro__copy, .process__copy { max-width: 560px; }
+}
+
+@media (max-width: 900px) {
+  .intro, .process { padding-block: var(--space-5); }
+}
+
+@media (max-width: 600px) {
+  .step { grid-template-columns: 28px minmax(0, 1fr); column-gap: 18px; }
+  .step__title { grid-column: 2; grid-row: 1; padding-bottom: 0; }
+  .step__copy {
+    grid-column: 2;
+    grid-row: 2;
+    margin-top: 10px;
+    padding-bottom: var(--space-4);
+  }
+}
+
+@media (max-width: 560px) {
+  .step__title { font-size: 18px; }
+}
+
+/* ---------- Capabilities: what each area includes ---------- */
+.service__points {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  column-gap: 28px;
+  max-width: 485px;
+  margin-top: -8px;
+  padding-bottom: 26px;
+}
+
+.service__points li {
+  padding: 10px 0;
+  border-top: 1px solid var(--border);
+  font-size: var(--fs-small);
+  line-height: 1.5;
+  color: var(--text-primary);
+}
+
+@media (max-width: 980px) {
+  .service__points { max-width: 620px; }
+}
+
+@media (max-width: 560px) {
+  .service__points { grid-template-columns: 1fr; padding-bottom: 22px; }
+}
+
+@media print {
+  .intro__grid, .process__head { display: block; }
+  .process__steps[data-armed] .step,
+  .process__steps[data-armed] .step__line { opacity: 1 !important; transform: none !important; }
+}

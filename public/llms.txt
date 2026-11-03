@@ -1,17 +1,26 @@
 # Young Timbers
-> Digital Product Studio based in South Africa.
+> Technology and digital product company based in South Africa. Soar to great heights.
 
 ## About Young Timbers
-Young Timbers partners with ambitious founders and forward-thinking enterprises to design, build, and scale world-class digital products. We merge strategic brand identity, bespoke UI/UX design, high-performance web engineering, and product development to turn bold ideas into category-defining market leaders.
+Young Timbers is a technology and digital product company helping businesses and founders establish, design, engineer and grow digital products. We bring strategy, creativity and engineering together to transform ideas into products built for the real world.
 
-## Core Capabilities
-- **Product & MVP Development:** Validating, prototyping, and launching market-ready products with speed and precision.
-- **Product Engineering & Architecture:** Crafting robust, scalable, and secure digital platforms engineered for performance and growth.
-- **Brand Identity & Creative Direction:** Building distinctive, memorable visual languages and design systems that command attention.
-- **Digital Strategy & Growth:** Designing high-converting user journeys, product-led marketing, and scalable digital experiences.
+We work with founders and startups, growing businesses and established organisations, taking a product from an early idea through brand, design, engineering and into the market.
+
+## How we work: from idea to impact
+1. **Establish the brand:** strategic positioning, brand development, messaging and visual identity.
+2. **Design the product:** product strategy, UI/UX research and interface design.
+3. **Engineer the technology:** MVP development, custom software and web platforms.
+4. **Take it to market and grow:** growth strategy, digital marketing and market distribution, continuing after launch.
+
+## Capabilities
+- **Brand Strategy & Identity:** brand positioning, brand strategy, messaging frameworks, visual identity development.
+- **Product Design & Experience:** product strategy, UI/UX research, user experience design, digital interface design.
+- **Product Engineering & Technology:** product engineering, MVP development, web application development, digital platforms.
+- **Growth & Market Development:** growth strategy, growth marketing, digital marketing, audience acquisition and market positioning.
 
 ## Company Overview
-- **Category:** Digital Product Studio, Software & Brand Consultancy
+- **Category:** Technology and Digital Product Company
+- **Established:** 2019
 - **Primary Website:** https://youngtimbers.co.za
 - **Direct Inquiries:** info@youngtimbers.co.za
 - **Headquarters:** Cape Town & Johannesburg, South Africa

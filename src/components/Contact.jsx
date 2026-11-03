@@ -279,10 +279,10 @@ export default function Contact() {
               </li>
               <li className="detail">
                 <span className="detail__label">Phone</span>
-                <span className="detail__value"><a href="tel:+27639464108" aria-label="Call studio at +27 63 946 4108">+27 63 946 4108</a></span>
+                <span className="detail__value"><a href="tel:+27639464108" aria-label="Call Young Timbers at +27 63 946 4108">+27 63 946 4108</a></span>
               </li>
               <li className="detail">
-                <span className="detail__label">Studio</span>
+                <span className="detail__label">Based</span>
                 <span className="detail__value">South Africa</span>
               </li>
             </ul>

@@ -5,9 +5,9 @@ import { heroGroup, heroTail, heroWord, still } from '../lib/motion.js';
    kept as <br class="lb"> so the same CSS rule still removes them
    below 900px and the headline reflows exactly as it did. */
 const LINES = [
-  'We design brands that',
-  'matter and build products',
-  'that last',
+  'We turn ambitious ideas',
+  'into technology that',
+  'moves businesses forward',
 ];
 
 export default function Hero() {
@@ -41,8 +41,10 @@ export default function Hero() {
 
         <div className="hero__sub">
           <motion.p className="hero__lede" variants={tail}>
-            A digital product studio building scalable software, distinct brand
-            identities, and growth marketing for modern businesses.
+            We help businesses and founders establish, design, engineer and grow
+            digital products. From early-stage concepts to fully developed digital
+            experiences, we bring strategy, design and technology together to build
+            for what comes next.
           </motion.p>
         </div>
 
@@ -52,9 +54,14 @@ export default function Hero() {
             <li className="meta__dash" aria-hidden="true">/</li>
             <li>South Africa / Remote</li>
           </ul>
-          <a className="btn btn--ghost" href="#services" aria-label="Explore Services">
-            <span>Explore Services</span>
-          </a>
+          <div className="hero__actions">
+            <a className="btn btn--solid" href="#contact" data-contact-target="form" aria-label="Start a Project">
+              <span>Start a Project</span>
+            </a>
+            <a className="btn btn--ghost" href="#services" aria-label="Explore Our Capabilities">
+              <span>Explore Our Capabilities</span>
+            </a>
+          </div>
         </motion.div>
       </motion.div>
     </section>
