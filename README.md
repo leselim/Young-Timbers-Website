@@ -128,8 +128,12 @@ the lead-capture pipeline and the build in more detail.
 
 ## Positioning (November 2026)
 
+<<<<<<< HEAD
 The copy presents Young Timbers as an independent digital product studio that designs, builds and
 launches digital products, for clients (Studio) and through its own ventures (Ventures). The homepage
+=======
+The copy presents Young Timbers as a technology and digital product company. The homepage
+>>>>>>> 53a1ec74db7f05cc99ed5950bde3f11109c8aa85
 runs: hero, capabilities ticker, Intro (who we are), Process (From idea to impact, four
 stages), Our capabilities (four areas), FAQ, Founder, Contact. The new rows reuse the
 existing tokens, type scale and grid; their styles sit at the end of `src/index.css` under

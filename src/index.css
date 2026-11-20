@@ -1648,6 +1648,7 @@ h1, h2, h3, p, li, a { overflow-wrap: break-word; }
   .process__steps[data-armed] .step,
   .process__steps[data-armed] .step__line { opacity: 1 !important; transform: none !important; }
 }
+<<<<<<< HEAD
 
 /* ---------- Studio positioning ---------------------------
    The two activities (Studio and Ventures) reuse the contact
@@ -1695,3 +1696,5 @@ h1, h2, h3, p, li, a { overflow-wrap: break-word; }
      become a fixed height. */
   .intro__activities .detail__label { flex: 0 0 auto; }
 }
+=======
+>>>>>>> 53a1ec74db7f05cc99ed5950bde3f11109c8aa85

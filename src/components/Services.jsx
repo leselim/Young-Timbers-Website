@@ -3,9 +3,13 @@ import { AnimatePresence, motion, useReducedMotion } from 'framer-motion';
 import { EASE, VIEWPORT, panelTransition, sectionReveal, still } from '../lib/motion.js';
 
 /* The four capability areas, in the same order as the process
+<<<<<<< HEAD
    above, so a stage and the work behind it share a number.
    Product design is the discipline the studio leads with, so it
    is tagged and opens first. */
+=======
+   above, so a stage and the work behind it share a number. */
+>>>>>>> 53a1ec74db7f05cc99ed5950bde3f11109c8aa85
 const SERVICES = [
   {
     id: 1,
@@ -16,6 +20,7 @@ const SERVICES = [
   {
     id: 2,
     name: 'Product Design & Experience',
+<<<<<<< HEAD
     tag: 'Core',
     copy: 'Research-led design, from user journeys and wireframes to interactive prototypes and design systems, so the product makes sense to the people using it from the first screen.',
     points: [
@@ -26,6 +31,10 @@ const SERVICES = [
       'Interactive prototyping',
       'Design systems',
     ],
+=======
+    copy: 'Design grounded in research, so the product makes sense to the people using it from the first screen.',
+    points: ['Product strategy', 'UI/UX research', 'User experience design', 'Digital interface design'],
+>>>>>>> 53a1ec74db7f05cc99ed5950bde3f11109c8aa85
   },
   {
     id: 3,
@@ -36,15 +45,25 @@ const SERVICES = [
   {
     id: 4,
     name: 'Growth & Market Development',
+<<<<<<< HEAD
     copy: 'Growth strategy and execution that put a product in front of the right audience and keep it growing after launch.',
+=======
+    copy: 'The strategy and execution that put a product in front of the right audience and keep it growing after launch.',
+>>>>>>> 53a1ec74db7f05cc99ed5950bde3f11109c8aa85
     points: ['Growth strategy', 'Growth marketing', 'Digital marketing', 'Audience acquisition and market positioning'],
   },
 ];
 
 export default function Services() {
+<<<<<<< HEAD
   /* Product design opens by default. Single-open behavior closes
      any active row when a new row is opened. */
   const [open, setOpen] = useState(2);
+=======
+  /* Only the first row starts open by default. Single-open behavior
+     closes any active row when a new row is opened. */
+  const [open, setOpen] = useState(SERVICES[0].id);
+>>>>>>> 53a1ec74db7f05cc99ed5950bde3f11109c8aa85
   const toggles = useRef([]);
   const reduce = useReducedMotion();
   const reveal = reduce ? still(sectionReveal) : sectionReveal;
@@ -79,9 +98,15 @@ export default function Services() {
           <p className="eyebrow">What we do</p>
           <h2 className="services__title">Our capabilities</h2>
           <p className="services__copy">
+<<<<<<< HEAD
             A focused studio for designing, building and growing digital products. We combine
             strategy, product design, engineering and market growth across the full product
             lifecycle, for clients and for our own ventures.
+=======
+            An integrated approach to building and growing digital businesses. We combine
+            strategic thinking, product design, engineering and market growth to deliver
+            solutions across the digital product lifecycle.
+>>>>>>> 53a1ec74db7f05cc99ed5950bde3f11109c8aa85
           </p>
           <a className="btn btn--solid" href="#contact" data-contact-target="form" aria-label="Start a Project">
             <span>Start a Project</span>
@@ -105,10 +130,14 @@ export default function Services() {
                     onClick={() => toggle(service.id)}
                     onKeyDown={(e) => onKeyDown(e, index)}
                   >
+<<<<<<< HEAD
                     <span className="service__name">
                       {service.name}
                       {service.tag && <span className="service__tag">{service.tag}</span>}
                     </span>
+=======
+                    <span className="service__name">{service.name}</span>
+>>>>>>> 53a1ec74db7f05cc99ed5950bde3f11109c8aa85
                     <motion.span
                       className="service__num"
                       aria-hidden="true"
