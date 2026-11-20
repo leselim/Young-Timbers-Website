@@ -15,10 +15,7 @@ const PROJECT_TYPES = [
   { value: 'product-design-mvp', label: 'Product Design & MVP Engineering' },
   { value: 'web-platforms-uiux', label: 'Web Platforms & UI/UX' },
   { value: 'digital-marketing-growth', label: 'Digital Marketing & Growth Strategy' },
-<<<<<<< HEAD
   { value: 'original-product-idea', label: 'Original Product Idea' },
-=======
->>>>>>> 53a1ec74db7f05cc99ed5950bde3f11109c8aa85
   { value: 'full-spectrum-build', label: 'Full-Spectrum Build (All Capabilities)' },
 ];
 

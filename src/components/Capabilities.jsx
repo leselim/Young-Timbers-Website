@@ -16,11 +16,7 @@ const ITEMS = [
   'Product Engineering',
   'MVP Development',
   'Web Platforms',
-<<<<<<< HEAD
   'Product Design',
-=======
-  'UI/UX Strategy',
->>>>>>> 53a1ec74db7f05cc99ed5950bde3f11109c8aa85
   'Growth Marketing',
 ];
 

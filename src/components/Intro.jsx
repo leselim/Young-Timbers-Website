@@ -4,7 +4,6 @@ import { VIEWPORT, sectionReveal, still } from '../lib/motion.js';
 /* =========================================================
    Intro
 
-<<<<<<< HEAD
    Positions Young Timbers as an independent digital product
    studio. Two activities sit under one roof: Studio, the
    client work, and Ventures, the company's own products. They
@@ -23,16 +22,6 @@ const ACTIVITIES = [
   },
 ];
 
-=======
-   The company description that used to sit at the top of
-   the Services column, given its own short row so the
-   positioning is stated once, plainly, before the process
-   and the capabilities explain it. Built from the same
-   two-column grid, eyebrow, heading scale and meta line the
-   other sections already use.
-   ========================================================= */
-
->>>>>>> 53a1ec74db7f05cc99ed5950bde3f11109c8aa85
 export default function Intro() {
   const reduce = useReducedMotion();
   const reveal = reduce ? still(sectionReveal) : sectionReveal;
@@ -50,17 +39,12 @@ export default function Intro() {
         <div className="intro__lead">
           <p className="eyebrow">Who we are</p>
           <h2 className="intro__title">
-<<<<<<< HEAD
             An independent digital product studio
-=======
-            A technology and digital product company
->>>>>>> 53a1ec74db7f05cc99ed5950bde3f11109c8aa85
           </h2>
         </div>
 
         <div className="intro__body">
           <p className="intro__copy">
-<<<<<<< HEAD
             Young Timbers designs, builds and launches digital products. We bring strategy,
             product design and engineering together, from the first idea to a product in market.
             We work with founders and businesses on their products, and we develop original
@@ -77,14 +61,6 @@ export default function Intro() {
           </ul>
 
           <p className="intro__meta">One studio, two activities</p>
-=======
-            From strategy to technology and market growth, we help businesses turn
-            opportunities into digital products. Our integrated approach connects brand
-            development, product design, engineering and distribution, giving ambitious
-            ideas the foundation to become meaningful digital solutions.
-          </p>
-          <p className="intro__meta">Soar to great heights</p>
->>>>>>> 53a1ec74db7f05cc99ed5950bde3f11109c8aa85
         </div>
       </div>
     </motion.section>

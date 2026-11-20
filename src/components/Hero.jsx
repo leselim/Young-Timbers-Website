@@ -5,15 +5,9 @@ import { heroGroup, heroTail, heroWord, still } from '../lib/motion.js';
    kept as <br class="lb"> so the same CSS rule still removes them
    below 900px and the headline reflows exactly as it did. */
 const LINES = [
-<<<<<<< HEAD
   'We design, build and launch',
   'digital products that',
   'move businesses forward',
-=======
-  'We turn ambitious ideas',
-  'into technology that',
-  'moves businesses forward',
->>>>>>> 53a1ec74db7f05cc99ed5950bde3f11109c8aa85
 ];
 
 export default function Hero() {
@@ -47,16 +41,9 @@ export default function Hero() {
 
         <div className="hero__sub">
           <motion.p className="hero__lede" variants={tail}>
-<<<<<<< HEAD
             Young Timbers is an independent digital product studio. We help founders and
             businesses research, design, engineer and launch digital products, and we
             build our own product ideas alongside our client work.
-=======
-            We help businesses and founders establish, design, engineer and grow
-            digital products. From early-stage concepts to fully developed digital
-            experiences, we bring strategy, design and technology together to build
-            for what comes next.
->>>>>>> 53a1ec74db7f05cc99ed5950bde3f11109c8aa85
           </motion.p>
         </div>
 

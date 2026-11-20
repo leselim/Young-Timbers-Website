@@ -22,41 +22,25 @@ const STAGES = [
     id: 1,
     title: 'Establish the brand',
     copy:
-<<<<<<< HEAD
       'We define the foundation of your business through strategic positioning, brand development, messaging and visual identity, giving your product a distinct voice and a recognisable place in the market.',
-=======
-      'We define the foundation of your business through strategic positioning, brand development, messaging and visual identity. We help give your business a distinct voice and a recognisable place in the market.',
->>>>>>> 53a1ec74db7f05cc99ed5950bde3f11109c8aa85
   },
   {
     id: 2,
     title: 'Design the product',
     copy:
-<<<<<<< HEAD
       'We turn ideas into intuitive digital experiences through product strategy, UI/UX research, user journey mapping, wireframing and interactive prototyping, supported by design systems that keep every screen consistent. Every decision is guided by the people who will use the product.',
-=======
-      'We transform ideas into intuitive digital experiences through product strategy, UI/UX research and interface design. Every decision is guided by the people who will use the product and the problem it needs to solve.',
->>>>>>> 53a1ec74db7f05cc99ed5950bde3f11109c8aa85
   },
   {
     id: 3,
     title: 'Engineer the technology',
     copy:
-<<<<<<< HEAD
       'We turn product concepts and designs into functional digital solutions, from MVP development and custom software to web platforms, built around real business needs.',
-=======
-      'We turn product concepts and designs into functional digital solutions. From MVP development and custom software to web platforms, we build technology around real business needs.',
->>>>>>> 53a1ec74db7f05cc99ed5950bde3f11109c8aa85
   },
   {
     id: 4,
     title: 'Take it to market and grow',
     copy:
-<<<<<<< HEAD
       'We help digital products reach the right audiences through growth strategy, digital marketing and market distribution, and keep supporting their growth after launch.',
-=======
-      'We help digital products connect with the right audiences through growth strategy, digital marketing and market distribution. Our work extends beyond launch, supporting the growth and visibility of the products we help build.',
->>>>>>> 53a1ec74db7f05cc99ed5950bde3f11109c8aa85
   },
 ];
 
@@ -82,15 +66,9 @@ export default function Process() {
             <h2 className="process__title">From idea to impact</h2>
           </div>
           <p className="process__copy">
-<<<<<<< HEAD
             A digital product takes more than a good idea. It needs clear strategy, thoughtful
             design, solid engineering and a route into the right market. We bring these
             disciplines together as one studio, from first conversation to launch and beyond.
-=======
-            Building a successful digital product takes more than a good idea. It takes a
-            clear strategy, thoughtful design, solid engineering and the ability to reach the
-            right market. We bring these disciplines together.
->>>>>>> 53a1ec74db7f05cc99ed5950bde3f11109c8aa85
           </p>
         </div>
 

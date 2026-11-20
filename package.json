@@ -3,11 +3,7 @@
   "private": true,
   "version": "2.0.0",
   "type": "module",
-<<<<<<< HEAD
   "description": "Young Timbers, an independent digital product studio. Vite + React + Tailwind + Framer Motion.",
-=======
-  "description": "Young Timbers, a technology and digital product company. Vite + React + Tailwind + Framer Motion.",
->>>>>>> 53a1ec74db7f05cc99ed5950bde3f11109c8aa85
   "scripts": {
     "dev": "vite",
     "build": "vite build",
