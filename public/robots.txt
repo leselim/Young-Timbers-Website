@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://youngtimbers.co.za/sitemap.xml

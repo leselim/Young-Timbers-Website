@@ -1,0 +1,31 @@
+# Young Timbers
+> Independent digital product studio based in South Africa. We design, build and launch digital products for clients, and develop our own ventures.
+
+## About Young Timbers
+Young Timbers is an independent digital product studio. We design, build and launch digital products, both for clients and through our own ventures. We bring strategy, product design and engineering together, from the first idea to a product in market.
+
+We work with founders and startups, growing businesses and established organisations, taking a product from an early idea through brand, design, engineering and into the market.
+
+## Two activities, one studio
+- **Studio:** working with businesses, startups and entrepreneurs to turn their ideas into functional digital products through strategy, UX/UI design and engineering.
+- **Ventures:** conceptualising, designing, developing and owning original digital products, testing them with users and building businesses around the ones that work.
+
+## How we work: from idea to impact
+1. **Establish the brand:** strategic positioning, brand development, messaging and visual identity.
+2. **Design the product:** product strategy, UI/UX research, user journey mapping, wireframing, interactive prototyping and design systems.
+3. **Engineer the technology:** MVP development, custom software and web platforms.
+4. **Take it to market and grow:** growth strategy, digital marketing and market distribution, continuing after launch.
+
+## Capabilities
+- **Brand Strategy & Identity:** brand positioning, brand strategy, messaging frameworks, visual identity development.
+- **Product Design & Experience:** product strategy, UI/UX research, user journey mapping, wireframing, interactive prototyping, design systems.
+- **Product Engineering & Technology:** product engineering, MVP development, web application development, digital platforms.
+- **Growth & Market Development:** growth strategy, growth marketing, digital marketing, audience acquisition and market positioning.
+
+## Company Overview
+- **Category:** Independent Digital Product Studio
+- **Established:** 2019
+- **Primary Website:** https://youngtimbers.co.za
+- **Direct Inquiries:** info@youngtimbers.co.za
+- **Headquarters:** Cape Town & Johannesburg, South Africa
+- **Markets Served:** South Africa & Global
